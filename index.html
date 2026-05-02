@@ -644,16 +644,6 @@ function confirmValidate(day){
   ]);
 }
 
-function resetTimerForNextSession(){
-  // Remet le chrono à 1h30 et efface le state du jour
-  if(tInt)clearInterval(tInt);
-  tOn=false;
-  tLeft=SESS_TOTAL;
-  saveTState({startTs:null,expired:false});
-  document.getElementById("tbar").classList.remove("on");
-  document.getElementById("expScreen").classList.remove("on");
-}
-
 function markDone(day){
   const ta=document.getElementById('subtxt'),txt=ta?.value?.trim();
   if(txt&&!S.subs[day]){S.subs[day]=txt;saveNote(day,txt);}
@@ -661,14 +651,19 @@ function markDone(day){
   const next=day+1;
   if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);
   saveS();
-  renderContent(day,false);renderSidebar();updateStats();celebrate();
-  showToast(`🎉 Session ${day} validée ! Chrono remis à 1h30 — Session ${day+1} débloquée.`);
-  // Auto-démarre le chrono pour la session suivante
+  // Reset chrono à 1h30 pour la session suivante
+  if(tInt)clearInterval(tInt);
+  tOn=false;
+  tLeft=SESS_TOTAL;
+  saveTState({startTs:null,expired:false});
+  document.getElementById('tbar').classList.remove('on');
+  document.getElementById('expScreen').classList.remove('on');
+  celebrate();
+  showToast(`🎉 Session ${day} validée ! Chrono remis à 1h30 pour la session ${day+1}.`);
+  // Navigue vers la session suivante après 1.5s
   setTimeout(()=>{
-    if(day+1<=120){
-      selectDay(day+1);
-      startTimer();
-    }
+    if(next<=120){S.cur=next;saveS();renderSidebar();renderContent(next,false);updateStats();}
+    else{renderContent(day,false);renderSidebar();updateStats();}
   },1500);
 }
 
@@ -730,4 +725,21 @@ function filterPhase(ph){
 
 // ── BOOT ───────────────────────────────────────────────────
 function bootApp(username){
-  lo
+  loadS();
+  if(!S.unlocked.includes(1))S.unlocked.push(1);
+  document.getElementById('huser').textContent='👤 '+username;
+  renderSidebar();renderContent(S.cur,false);renderNotes();updateStats();
+  checkTimerOnLoad();
+}
+
+function init(){
+  const sess=getSession();
+  if(sess&&sess.u){document.getElementById('loginWrap').classList.add('gone');bootApp(sess.u);}
+}
+
+document.getElementById('toReg').onclick=showReg;
+document.getElementById('toLogin').onclick=showLogin;
+init();
+</script>
+</body>
+</html>
