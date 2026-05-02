@@ -25,6 +25,8 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;cursor:default;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4;}
+
+/* LOGIN */
 .login-wrap{position:fixed;inset:0;z-index:900;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px;}
 .login-wrap.gone{display:none;}
 .login-box{width:100%;max-width:400px;animation:rise .6s cubic-bezier(.34,1.56,.64,1);}
@@ -47,6 +49,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .login-switch{margin-top:20px;text-align:center;font-size:13px;color:var(--dim);}
 .login-switch span{color:var(--orange);cursor:pointer;border-bottom:1px solid transparent;transition:border-color .2s;}
 .login-switch span:hover{border-color:var(--orange);}
+
+/* HEADER */
 header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);}
 .h-inner{max-width:1400px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .h-logo{display:flex;align-items:center;gap:12px;}
@@ -65,23 +69,22 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .pring-bg{fill:none;stroke:var(--brd2);stroke-width:3;}
 .pring-fill{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;stroke-dasharray:119.4;stroke-dashoffset:119.4;transition:stroke-dashoffset 1s ease;filter:drop-shadow(0 0 4px var(--orange));}
 .pring-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--orange);}
+
+/* TIMER BAR — informatif uniquement, ne bloque plus rien */
 .tbar{display:none;background:var(--bg2);border-bottom:1px solid var(--brd);padding:8px 0;}
 .tbar.on{display:block;}
 .tbar-inner{max-width:1400px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:16px;}
 .tbar-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;white-space:nowrap;}
+.tbar-info{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:1px;white-space:nowrap;}
 .ttrack{flex:1;height:4px;background:var(--brd2);border-radius:2px;overflow:hidden;}
 .tfill{height:100%;background:var(--orange);border-radius:2px;transition:width 1s linear,background .5s;width:100%;}
 .tfill.warn{background:#f59e0b;}
-.tfill.danger{background:var(--red);}
+.tfill.done-col{background:var(--green);}
 .tdisp{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;color:var(--orange);min-width:60px;text-align:right;}
 .tdisp.warn{color:#f59e0b;}
-.tdisp.danger{color:var(--red);}
-.expired{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.97);align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:40px;}
-.expired.on{display:flex;}
-.exp-ico{font-size:56px;margin-bottom:20px;}
-.exp-title{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;color:var(--red);margin-bottom:16px;}
-.exp-txt{color:var(--mid);font-size:15px;line-height:1.8;max-width:440px;margin-bottom:28px;}
-.exp-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);border:1px solid var(--brd2);border-radius:6px;padding:12px 24px;}
+.tdisp.done-col{color:var(--green);}
+
+/* MAIN LAYOUT */
 .wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 32px;}
 .hero{padding:60px 0 48px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;border-bottom:1px solid var(--brd);}
 .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
@@ -147,11 +150,15 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .bizcard{background:rgba(255,107,26,.06);border:1px solid rgba(255,107,26,.15);border-radius:8px;padding:18px;margin-top:6px;}
 .bizprice{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--orange);margin-bottom:6px;}
 .bizdet{font-size:12px;color:var(--mid);line-height:1.7;}
+
+/* START BANNER */
 .start-banner{margin:0 36px 36px;background:linear-gradient(135deg,rgba(255,107,26,.1),rgba(255,107,26,.03));border:1px solid rgba(255,107,26,.2);border-radius:10px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .start-txt h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px;}
 .start-txt p{font-size:12px;color:var(--mid);font-family:'JetBrains Mono',monospace;}
 .startbtn{padding:13px 28px;background:var(--orange);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .startbtn:hover{background:var(--orange2);transform:translateY(-1px);}
+
+/* SUBMIT AREA */
 .subarea{margin:0 36px 36px;background:var(--bg3);border:1px solid var(--brd2);border-radius:10px;padding:24px;}
 .sub-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:14px;}
 .subtxt{width:100%;min-height:130px;background:#050505;border:1px solid var(--brd2);border-radius:6px;color:var(--white);font-family:'JetBrains Mono',monospace;font-size:12px;padding:14px;resize:vertical;outline:none;transition:border-color .2s;line-height:1.7;}
@@ -159,19 +166,34 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .subtxt::placeholder{color:var(--dim);}
 .subbtn{margin-top:14px;width:100%;padding:14px;background:var(--orange);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;cursor:pointer;transition:all .2s;}
 .subbtn:hover{background:var(--orange2);transform:translateY(-1px);}
+
+/* COPY PROMPT BANNER */
 .copy-banner{margin:0 36px 36px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:10px;padding:24px;}
 .copy-banner-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:12px;}
 .copy-banner-txt{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:16px;}
 .copy-banner-box{background:#050505;border:1px solid rgba(34,197,94,.15);border-radius:6px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);line-height:1.8;white-space:pre-wrap;margin-bottom:14px;}
 .copy-green-btn{padding:11px 20px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:6px;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
 .copy-green-btn:hover{background:rgba(34,197,94,.2);}
+
+/* ✅ NOUVEAU — BOUTON VALIDER SESSION */
+.validate-banner{margin:0 36px 36px;background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.03));border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.validate-txt h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px;color:var(--green);}
+.validate-txt p{font-size:12px;color:var(--mid);font-family:'JetBrains Mono',monospace;line-height:1.6;}
+.validatebtn{padding:15px 32px;background:var(--green);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:all .2s;box-shadow:0 0 20px rgba(34,197,94,.3);}
+.validatebtn:hover{background:#16a34a;transform:translateY(-2px);box-shadow:0 0 30px rgba(34,197,94,.5);}
+
+/* DONE AREA */
 .done-area{margin:0 36px 36px;background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.12);border-radius:10px;padding:24px;}
 .done-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:10px;}
 .done-work{font-size:12px;color:var(--dim);font-family:'JetBrains Mono',monospace;line-height:1.7;}
+
+/* LOCKED */
 .locked-view{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center;}
 .lock-ico{font-size:40px;margin-bottom:16px;opacity:.2;}
 .lock-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--dim);margin-bottom:10px;}
 .lock-txt{color:var(--dim);font-size:13px;line-height:1.7;max-width:320px;font-family:'JetBrains Mono',monospace;}
+
+/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(10,10,10,.9);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:20px;}
 .modal-bg.on{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--brd2);border-radius:12px;padding:32px;max-width:520px;width:100%;animation:rise .3s ease;position:relative;}
@@ -184,6 +206,8 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .mbtn.pri{background:var(--orange);color:#000;}
 .mbtn.sec{background:transparent;border:1px solid var(--brd2);color:var(--mid);}
 .mbtn:hover{transform:translateY(-1px);}
+
+/* NOTES PANEL */
 .notes-panel{position:fixed;right:-360px;top:0;bottom:0;width:340px;background:var(--bg2);border-left:1px solid var(--brd);z-index:150;transition:right .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
 .notes-panel.on{right:0;}
 .notes-head{padding:18px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;}
@@ -203,7 +227,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .fab:hover{transform:scale(1.08);border-color:var(--orange);}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1px solid var(--orange);border-radius:6px;padding:12px 22px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);z-index:400;transition:transform .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;}
 .toast.on{transform:translateX(-50%) translateY(0);}
-@media(max-width:768px){.layout{grid-template-columns:1fr;}.sidebar{position:static;height:auto;}.h-stats{display:none;}.hero{grid-template-columns:1fr;}.hero-right{display:none;}}
+@media(max-width:768px){.layout{grid-template-columns:1fr;}.sidebar{position:static;height:auto;}.h-stats{display:none;}.hero{grid-template-columns:1fr;}.hero-right{display:none;}.validate-banner{flex-direction:column;}.start-banner{flex-direction:column;}}
 </style>
 </head>
 <body>
@@ -246,21 +270,14 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
   </div>
 </div>
 
-<!-- TIMER BAR -->
+<!-- TIMER BAR — informatif uniquement -->
 <div class="tbar" id="tbar">
   <div class="tbar-inner">
-    <span class="tbar-lbl">⏱ Session</span>
+    <span class="tbar-lbl">⏱ Durée session</span>
     <div class="ttrack"><div class="tfill" id="tfill"></div></div>
-    <div class="tdisp" id="tdisp">1:30:00</div>
+    <div class="tdisp" id="tdisp">00:00</div>
+    <span class="tbar-info">— indicatif uniquement</span>
   </div>
-</div>
-
-<!-- EXPIRED -->
-<div class="expired" id="expScreen">
-  <div class="exp-ico">⏰</div>
-  <div class="exp-title">SESSION TERMINÉE</div>
-  <div class="exp-txt">Ta session de 1h30 est écoulée pour aujourd'hui.<br>Tu as bossé. C'est bien. Reviens demain.</div>
-  <div class="exp-note">Prochaine session disponible demain.</div>
 </div>
 
 <!-- HEADER -->
@@ -302,7 +319,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
     <div class="hero-left">
       <div class="hero-eyebrow">Bootcamp actif — 120 jours</div>
       <h1>DEVIENS<br><em>CONSULTANT IA</em><br>EN 120 JOURS</h1>
-      <p class="hero-sub">Chaque session complétée te rapproche de tes premiers clients. Chaque prompt maîtrisé vaut de l'argent.</p>
+      <p class="hero-sub">Chaque session validée te rapproche de tes premiers clients. Chaque prompt maîtrisé vaut de l'argent.</p>
     </div>
     <div class="hero-right">
       <div class="hero-big-num" id="heroNum">120</div>
@@ -411,6 +428,7 @@ for(let d=1;d<=120;d++){
   }
 }
 
+// ─── STATE ───────────────────────────────────────────────
 let S={cur:1,unlocked:[1],done:[],notes:[],subs:{}};
 function loadS(){try{const r=localStorage.getItem('agentia_s');if(r)S={...S,...JSON.parse(r)};}catch(e){}}
 function saveS(){try{localStorage.setItem('agentia_s',JSON.stringify(S));}catch(e){}}
@@ -419,6 +437,7 @@ function saveUsers(u){localStorage.setItem('agentia_users',JSON.stringify(u));}
 function getSession(){try{return JSON.parse(sessionStorage.getItem('agentia_sess')||'null');}catch(e){return null;}}
 function setSession(u){sessionStorage.setItem('agentia_sess',JSON.stringify({u,ts:Date.now()}));}
 
+// ─── AUTH ─────────────────────────────────────────────────
 function showReg(){document.getElementById('loginForm').style.display='none';document.getElementById('regForm').style.display='block';document.getElementById('rerr').textContent='';}
 function showLogin(){document.getElementById('regForm').style.display='none';document.getElementById('loginForm').style.display='block';document.getElementById('lerr').textContent='';}
 
@@ -455,51 +474,41 @@ function handleReg(){
 
 function logout(){sessionStorage.removeItem('agentia_sess');location.reload();}
 
-const SESS=90*60;
-let tLeft=SESS,tInt=null,tOn=false;
-function todayKey(){const d=new Date();return`agentia_t_${d.getFullYear()}_${d.getMonth()}_${d.getDate()}`;}
-function getTState(){try{return JSON.parse(localStorage.getItem(todayKey())||'null');}catch(e){return null;}}
-function saveTState(o){localStorage.setItem(todayKey(),JSON.stringify(o));}
-function isExpired(){const t=getTState();return t&&t.exp===true;}
+// ─── TIMER — INDICATIF UNIQUEMENT, NE BLOQUE PLUS ────────
+let tElapsed=0,tInt=null,tOn=false,tStart=null;
+const SESS=90*60; // 1h30 de référence visuelle
 
-function startSession(day){
-  if(isExpired()){showToast('⏰ Session expirée pour aujourd\'hui !');return;}
-  const ex=getTState();
-  if(ex&&ex.start&&!ex.exp){const el=Math.floor((Date.now()-ex.start)/1000);tLeft=Math.max(0,SESS-el);}
-  else{tLeft=SESS;saveTState({start:Date.now(),exp:false});}
-  tOn=true;
+function startTimer(){
+  if(tOn)return;
+  tOn=true;tStart=Date.now();tElapsed=0;
   document.getElementById('tbar').classList.add('on');
-  renderContent(day,true);
   updateTimer();
-  clearInterval(tInt);
-  tInt=setInterval(()=>{tLeft--;saveTState({start:Date.now()-(SESS-tLeft)*1000,exp:false});updateTimer();if(tLeft<=0){clearInterval(tInt);tOn=false;saveTState({start:null,exp:true});document.getElementById('tbar').classList.remove('on');document.getElementById('expScreen').classList.add('on');}},1000);
+  tInt=setInterval(()=>{
+    tElapsed=Math.floor((Date.now()-tStart)/1000);
+    updateTimer();
+  },1000);
+}
+
+function stopTimer(){
+  if(tInt)clearInterval(tInt);
+  tOn=false;
+  document.getElementById('tbar').classList.remove('on');
 }
 
 function updateTimer(){
-  const h=Math.floor(tLeft/3600),m=Math.floor((tLeft%3600)/60),s=tLeft%60;
-  const disp=`${h>0?h+':':''}${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  const pct=(tLeft/SESS)*100;
+  const h=Math.floor(tElapsed/3600),m=Math.floor((tElapsed%3600)/60),s=tElapsed%60;
+  const disp=`${h>0?String(h).padStart(2,'0')+':':''}${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const pct=Math.min((tElapsed/SESS)*100,100);
   const f=document.getElementById('tfill'),d=document.getElementById('tdisp');
-  d.textContent=disp;f.style.width=pct+'%';
-  const w=tLeft<=15*60&&tLeft>5*60,dng=tLeft<=5*60;
-  f.className='tfill'+(dng?' danger':w?' warn':'');
-  d.className='tdisp'+(dng?' danger':w?' warn':'');
+  d.textContent=disp;
+  f.style.width=pct+'%';
+  // couleur : vert jusqu'à 1h, amber entre 1h et 1h30, puis reste amber
+  const warn=tElapsed>=60*60;
+  f.className='tfill'+(warn?' warn':'');
+  d.className='tdisp'+(warn?' warn':'');
 }
 
-function checkTimer(){
-  const ex=getTState();if(!ex)return;
-  if(ex.exp){document.getElementById('expScreen').classList.add('on');return;}
-  if(ex.start){
-    const el=Math.floor((Date.now()-ex.start)/1000);
-    tLeft=Math.max(0,SESS-el);
-    if(tLeft>0){
-      tOn=true;document.getElementById('tbar').classList.add('on');updateTimer();
-      clearInterval(tInt);
-      tInt=setInterval(()=>{tLeft--;updateTimer();saveTState({start:ex.start,exp:false});if(tLeft<=0){clearInterval(tInt);tOn=false;saveTState({start:null,exp:true});document.getElementById('tbar').classList.remove('on');document.getElementById('expScreen').classList.add('on');}},1000);
-    }
-  }
-}
-
+// ─── SIDEBAR ──────────────────────────────────────────────
 function renderSidebar(){
   const list=document.getElementById('daylist');list.innerHTML='';
   const bounds=[{s:1,e:20,n:'Phase 1 — Fondamentaux'},{s:21,e:45,n:'Phase 2 — Automatisation'},{s:46,e:75,n:'Phase 3 — Agents IA'},{s:76,e:100,n:'Phase 4 — Cas Réels'},{s:101,e:120,n:'Phase 5 — Branding & Vente'}];
@@ -519,15 +528,18 @@ function renderSidebar(){
 
 const PHN=['','Fondamentaux','Automatisation','Agents IA','Cas Réels','Branding & Vente'];
 
+// ─── CONTENT ──────────────────────────────────────────────
 function renderContent(day,go){
   const area=document.getElementById('content');area.innerHTML='';
   const dd=DATA[day-1];
   const isU=S.unlocked.includes(day),isDone=S.done.includes(day);
   const card=document.createElement('div');card.className='daycard on';
+
   if(!isU){
-    card.innerHTML=`<div class="locked-view"><div class="lock-ico">⚿</div><div class="lock-title">SESSION ${day} VERROUILLÉE</div><div class="lock-txt">Valide la session ${day-1} dans le chat mentor pour débloquer celle-ci.</div></div>`;
+    card.innerHTML=`<div class="locked-view"><div class="lock-ico">⚿</div><div class="lock-title">SESSION ${day} VERROUILLÉE</div><div class="lock-txt">Clique sur "✅ Session Validée" dans la session ${day-1} pour débloquer celle-ci.</div></div>`;
     area.appendChild(card);return;
   }
+
   let secsHtml='';
   dd.secs.forEach(s=>{
     let ch='';
@@ -537,39 +549,166 @@ function renderContent(day,go){
     else ch=`<div class="sec-txt">${s.txt.replace(/\n/g,'<br>')}</div>`;
     secsHtml+=`<div class="sec"><div class="sec-head"><span class="sec-icon">${s.ico}</span><span class="sec-title">${s.ttl}</span></div>${ch}</div>`;
   });
-  const exp=isExpired();const tGo=tOn||go;
+
   const corrPrompt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n[DÉCRIS EN 2-3 LIGNES CE QUE TU AS FAIT ET PRODUIT]\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;
+
   let bottom='';
+
   if(isDone){
-    bottom=`<div class="done-area"><div class="done-title">✓ Session validée par ton mentor</div><div class="done-work">${S.subs[day]||'Travail validé.'}</div></div>`;
-  } else if(exp&&!tGo){
-    bottom=`<div class="subarea" style="border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.03)"><div class="sub-title" style="color:var(--red)">⏰ Session terminée pour aujourd'hui</div><div style="color:var(--dim);font-size:12px;font-family:'JetBrains Mono',monospace;">Reviens demain. Tu as bossé aujourd'hui.</div></div>`;
-  } else if(!tGo){
-    bottom=`<div class="start-banner"><div class="start-txt"><h3>PRÊT À DÉMARRER ?</h3><p>1h30 de session. Chaque minute compte.</p></div><button class="startbtn" onclick="startSession(${day})">▶ DÉMARRER</button></div>`;
+    // Session déjà validée
+    bottom=`<div class="done-area"><div class="done-title">✅ Session ${day} validée</div><div class="done-work">${S.subs[day]||'Travail validé.'}</div></div>`;
+  } else if(!go){
+    // Pas encore démarrée
+    bottom=`<div class="start-banner"><div class="start-txt"><h3>PRÊT À DÉMARRER ?</h3><p>Lance la session. Le chrono est indicatif — tu valides quand tu es prêt.</p></div><button class="startbtn" onclick="startSession(${day})">▶ DÉMARRER</button></div>`;
   } else {
-    bottom=`<div class="subarea"><div class="sub-title">📝 Soumets ton travail du jour</div><textarea class="subtxt" id="subtxt" placeholder="Décris ici ce que tu as produit aujourd'hui...">${S.subs[day]||''}</textarea><button class="subbtn" onclick="submitWork(${day})">SAUVEGARDER MON TRAVAIL</button></div><div class="copy-banner"><div class="copy-banner-title">📋 Prompt de correction — à envoyer dans le chat</div><div class="copy-banner-txt">Copie ce prompt et envoie-le dans le chat Claude. Ton mentor corrigera ton travail et te dira si tu peux passer au jour suivant.</div><div class="copy-banner-box" id="corrBox">${corrPrompt}</div><button class="copy-green-btn" onclick="copyCorrPrompt(${day})">COPIER LE PROMPT DE CORRECTION</button></div>`;
+    // Session en cours — affiche zone de travail + prompt correction + bouton valider
+    bottom=`
+    <div class="subarea">
+      <div class="sub-title">📝 Note ton travail du jour</div>
+      <textarea class="subtxt" id="subtxt" placeholder="Décris ici ce que tu as produit aujourd'hui...">${S.subs[day]||''}</textarea>
+      <button class="subbtn" onclick="submitWork(${day})">SAUVEGARDER</button>
+    </div>
+    <div class="copy-banner">
+      <div class="copy-banner-title">📋 Prompt de correction — à envoyer dans le chat</div>
+      <div class="copy-banner-txt">Copie ce prompt → envoie-le dans le chat Claude → obtiens ta validation → reviens ici cliquer sur le bouton vert.</div>
+      <div class="copy-banner-box">${corrPrompt}</div>
+      <button class="copy-green-btn" onclick="copyCorrPrompt(${day})">COPIER LE PROMPT DE CORRECTION</button>
+    </div>
+    <div class="validate-banner">
+      <div class="validate-txt">
+        <h3>✅ SESSION VALIDÉE PAR LE MENTOR ?</h3>
+        <p>Claude t'a validé dans le chat ?<br>Clique ici pour débloquer la session ${day+1}.</p>
+      </div>
+      <button class="validatebtn" onclick="confirmValidate(${day})">✅ SESSION VALIDÉE</button>
+    </div>`;
   }
+
   card.innerHTML=`<div class="card-head"><div class="card-meta"><span class="dtag">JOUR ${String(day).padStart(2,'0')}</span><span class="ptag">Phase ${dd.phase} — ${PHN[dd.phase]}</span>${isDone?'<span class="vtag">✓ VALIDÉ</span>':''}</div><div class="card-title">${dd.title}</div><div class="card-sub">${dd.sub}</div></div><div class="card-body">${secsHtml}</div>${bottom}`;
   area.appendChild(card);
 }
 
-function selectDay(d){S.cur=d;saveS();renderSidebar();renderContent(d);updateStats();document.getElementById('content').scrollIntoView({behavior:'smooth',block:'start'});}
-function submitWork(day){const ta=document.getElementById('subtxt');const txt=ta?.value?.trim();if(!txt){showToast('⚠️ Décris ton travail avant de sauvegarder !');return;}S.subs[day]=txt;saveS();saveNote(day,txt);showToast('✅ Travail sauvegardé ! Copie le prompt de correction ci-dessous.');}
-function copyCorrPrompt(day){const ta=document.getElementById('subtxt');const work=ta?.value?.trim()||S.subs[day]||'[travail non renseigné]';const txt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n${work}\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;navigator.clipboard.writeText(txt).then(()=>showToast('✅ Prompt copié ! Colle-le dans le chat Claude.')).catch(()=>{});}
-function markDone(day){if(!S.done.includes(day))S.done.push(day);const next=day+1;if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);saveS();renderContent(day);renderSidebar();updateStats();celebrate();showToast('🎉 Session '+day+' validée ! Session '+(day+1)+' débloquée.');}
+// ─── ACTIONS ──────────────────────────────────────────────
+function startSession(day){
+  startTimer();
+  renderContent(day,true);
+  showToast('▶ Session démarrée — le chrono tourne, bonne session !');
+}
 
-function saveNote(day,content){S.notes=S.notes.filter(n=>n.day!==day);S.notes.unshift({id:Date.now(),day,title:`Session ${day} — ${DATA[day-1]?.title}`,content,date:new Date().toLocaleDateString('fr-FR')});saveS();renderNotes();}
-function renderNotes(){const body=document.getElementById('notesBody'),empty=document.getElementById('notesEmpty');body.querySelectorAll('.note-item').forEach(e=>e.remove());if(!S.notes.length){if(empty)empty.style.display='block';return;}if(empty)empty.style.display='none';S.notes.forEach(n=>{const el=document.createElement('div');el.className='note-item';el.innerHTML=`<div class="note-ttl">${n.title}</div><div class="note-prev">${n.content}</div><div class="note-date">${n.date}</div>`;el.onclick=()=>dlNote(n);body.appendChild(el);});}
-function dlNote(n){const c=`AGENTIA — ${n.title}\nDate: ${n.date}\n\n${'='.repeat(50)}\n\n${n.content}`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));a.download=`AGENTIA_Session${n.day}_${n.date.replace(/\//g,'-')}.txt`;a.click();showToast('📥 Note téléchargée !');}
-function exportAll(){if(!S.notes.length){showToast('Aucune note à exporter');return;}let c=`AGENTIA — Toutes mes notes\n${new Date().toLocaleDateString('fr-FR')}\n\n${'='.repeat(60)}\n\n`;S.notes.forEach(n=>{c+=`SESSION ${n.day} — ${n.title}\n${n.date}\n${'─'.repeat(40)}\n${n.content}\n\n`;});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));a.download=`AGENTIA_AllNotes.txt`;a.click();showToast('📦 Export complet !');}
+function submitWork(day){
+  const ta=document.getElementById('subtxt');
+  const txt=ta?.value?.trim();
+  if(!txt){showToast('⚠️ Décris ton travail avant de sauvegarder !');return;}
+  S.subs[day]=txt;saveS();saveNote(day,txt);
+  showToast('💾 Travail sauvegardé ! Copie le prompt de correction.');
+}
+
+function copyCorrPrompt(day){
+  const ta=document.getElementById('subtxt');
+  const work=ta?.value?.trim()||S.subs[day]||'[travail non renseigné]';
+  const txt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n${work}\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('✅ Prompt copié ! Colle-le dans le chat Claude.')).catch(()=>{});
+}
+
+function confirmValidate(day){
+  showModal('✅','Confirmer la validation',`Claude t'a bien validé la session ${day} dans le chat ?\n\nEn confirmant, la session ${day+1} sera débloquée.`,[
+    {txt:'OUI, VALIDER',pri:true,fn:()=>{closeModal();markDone(day);}},
+    {txt:'Annuler',pri:false,fn:closeModal}
+  ]);
+}
+
+function markDone(day){
+  const ta=document.getElementById('subtxt');
+  const txt=ta?.value?.trim();
+  if(txt&&!S.subs[day]){S.subs[day]=txt;saveNote(day,txt);}
+  if(!S.done.includes(day))S.done.push(day);
+  const next=day+1;
+  if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);
+  saveS();
+  stopTimer();
+  renderContent(day,false);
+  renderSidebar();
+  updateStats();
+  celebrate();
+  showToast(`🎉 Session ${day} validée ! Session ${day+1} débloquée.`);
+}
+
+function selectDay(d){
+  S.cur=d;saveS();
+  renderSidebar();
+  const go=tOn&&S.cur===d;
+  renderContent(d,go);
+  updateStats();
+  document.getElementById('content').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ─── NOTES ────────────────────────────────────────────────
+function saveNote(day,content){
+  S.notes=S.notes.filter(n=>n.day!==day);
+  S.notes.unshift({id:Date.now(),day,title:`Session ${day} — ${DATA[day-1]?.title}`,content,date:new Date().toLocaleDateString('fr-FR')});
+  saveS();renderNotes();
+}
+
+function renderNotes(){
+  const body=document.getElementById('notesBody'),empty=document.getElementById('notesEmpty');
+  body.querySelectorAll('.note-item').forEach(e=>e.remove());
+  if(!S.notes.length){if(empty)empty.style.display='block';return;}
+  if(empty)empty.style.display='none';
+  S.notes.forEach(n=>{
+    const el=document.createElement('div');el.className='note-item';
+    el.innerHTML=`<div class="note-ttl">${n.title}</div><div class="note-prev">${n.content}</div><div class="note-date">${n.date}</div>`;
+    el.onclick=()=>dlNote(n);body.appendChild(el);
+  });
+}
+
+function dlNote(n){
+  const c=`AGENTIA — ${n.title}\nDate: ${n.date}\n\n${'='.repeat(50)}\n\n${n.content}`;
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));
+  a.download=`AGENTIA_Session${n.day}_${n.date.replace(/\//g,'-')}.txt`;a.click();
+  showToast('📥 Note téléchargée !');
+}
+
+function exportAll(){
+  if(!S.notes.length){showToast('Aucune note à exporter');return;}
+  let c=`AGENTIA — Toutes mes notes\n${new Date().toLocaleDateString('fr-FR')}\n\n${'='.repeat(60)}\n\n`;
+  S.notes.forEach(n=>{c+=`SESSION ${n.day} — ${n.title}\n${n.date}\n${'─'.repeat(40)}\n${n.content}\n\n`;});
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));
+  a.download='AGENTIA_AllNotes.txt';a.click();showToast('📦 Export complet !');
+}
+
 function toggleNotes(){document.getElementById('notesPanel').classList.toggle('on');renderNotes();}
-function showModal(ico,title,txt,actions){document.getElementById('mico').textContent=ico;document.getElementById('mtitle').textContent=title;document.getElementById('mtxt').textContent=txt;const acts=document.getElementById('macts');acts.innerHTML='';actions.forEach(a=>{const b=document.createElement('button');b.className=`mbtn ${a.pri?'pri':'sec'}`;b.textContent=a.txt;b.onclick=a.fn;acts.appendChild(b);});document.getElementById('modalBg').classList.add('on');}
+
+// ─── MODAL ────────────────────────────────────────────────
+function showModal(ico,title,txt,actions){
+  document.getElementById('mico').textContent=ico;
+  document.getElementById('mtitle').textContent=title;
+  document.getElementById('mtxt').textContent=txt;
+  const acts=document.getElementById('macts');acts.innerHTML='';
+  actions.forEach(a=>{const b=document.createElement('button');b.className=`mbtn ${a.pri?'pri':'sec'}`;b.textContent=a.txt;b.onclick=a.fn;acts.appendChild(b);});
+  document.getElementById('modalBg').classList.add('on');
+}
 function closeModal(){document.getElementById('modalBg').classList.remove('on');}
-function copyP(btn){const t=btn.parentElement.textContent.replace('COPIER','').replace('// PROMPT','').trim();navigator.clipboard.writeText(t).then(()=>{btn.textContent='COPIÉ ✓';setTimeout(()=>btn.textContent='COPIER',2000);});}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500);}
-function celebrate(){for(let i=0;i<20;i++)setTimeout(()=>{const p=document.createElement('div');p.style.cssText=`position:fixed;width:7px;height:7px;border-radius:50%;background:${['#ff6b1a','#ff8c42','#22c55e','#f0ebe3'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*60}%;z-index:999;pointer-events:none;animation:pop 1.3s ease-out forwards;`;document.body.appendChild(p);setTimeout(()=>p.remove(),1300);},i*60);}
+
+// ─── UTILS ────────────────────────────────────────────────
+function copyP(btn){
+  const t=btn.parentElement.textContent.replace('COPIER','').replace('// PROMPT','').trim();
+  navigator.clipboard.writeText(t).then(()=>{btn.textContent='COPIÉ ✓';setTimeout(()=>btn.textContent='COPIER',2000);});
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),3500);
+}
+
+function celebrate(){
+  for(let i=0;i<20;i++)setTimeout(()=>{
+    const p=document.createElement('div');
+    p.style.cssText=`position:fixed;width:7px;height:7px;border-radius:50%;background:${['#ff6b1a','#22c55e','#f0ebe3','#ffad75'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*60}%;z-index:999;pointer-events:none;animation:pop 1.3s ease-out forwards;`;
+    document.body.appendChild(p);setTimeout(()=>p.remove(),1300);
+  },i*60);
+}
 const ps=document.createElement('style');ps.textContent='@keyframes pop{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-160px) scale(0);opacity:0}}';document.head.appendChild(ps);
 
+// ─── STATS ────────────────────────────────────────────────
 function updateStats(){
   const done=S.done.length,pct=Math.round((done/120)*100);
   document.getElementById('hday').textContent=String(S.cur).padStart(2,'0')+'/120';
@@ -578,7 +717,11 @@ function updateStats(){
   document.getElementById('rpct').textContent=pct+'%';
   document.getElementById('heroNum').textContent=120-done;
   const circ=119.4;document.getElementById('rfill').style.strokeDashoffset=circ-(pct/100)*circ;
-  [1,2,3,4,5].forEach(ph=>{const ps=[1,21,46,76,101][ph-1],pe=[20,45,75,100,120][ph-1];const tot=pe-ps+1,dn=S.done.filter(d=>d>=ps&&d<=pe).length;const b=document.getElementById('pf'+ph);if(b)b.style.width=Math.round((dn/tot)*100)+'%';});
+  [1,2,3,4,5].forEach(ph=>{
+    const ps=[1,21,46,76,101][ph-1],pe=[20,45,75,100,120][ph-1];
+    const tot=pe-ps+1,dn=S.done.filter(d=>d>=ps&&d<=pe).length;
+    const b=document.getElementById('pf'+ph);if(b)b.style.width=Math.round((dn/tot)*100)+'%';
+  });
 }
 
 function filterPhase(ph){
@@ -587,11 +730,12 @@ function filterPhase(ph){
   selectDay(S.unlocked.includes(ps)?ps:S.cur);
 }
 
+// ─── BOOT ─────────────────────────────────────────────────
 function bootApp(username){
   loadS();
   if(!S.unlocked.includes(1))S.unlocked.push(1);
   document.getElementById('huser').textContent='👤 '+username;
-  renderSidebar();renderContent(S.cur);renderNotes();updateStats();checkTimer();
+  renderSidebar();renderContent(S.cur,false);renderNotes();updateStats();
 }
 
 function init(){
@@ -602,8 +746,8 @@ function init(){
   }
 }
 
-document.getElementById('toReg').onclick = showReg;
-document.getElementById('toLogin').onclick = showLogin;
+document.getElementById('toReg').onclick=showReg;
+document.getElementById('toLogin').onclick=showLogin;
 init();
 </script>
 </body>
