@@ -24,11 +24,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;cursor:default;}
-
-/* GRAIN OVERLAY */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4;}
-
-/* ═══════════════════════ LOGIN ═══════════════════════ */
 .login-wrap{position:fixed;inset:0;z-index:900;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px;}
 .login-wrap.gone{display:none;}
 .login-box{width:100%;max-width:400px;animation:rise .6s cubic-bezier(.34,1.56,.64,1);}
@@ -51,9 +47,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .login-switch{margin-top:20px;text-align:center;font-size:13px;color:var(--dim);}
 .login-switch span{color:var(--orange);cursor:pointer;border-bottom:1px solid transparent;transition:border-color .2s;}
 .login-switch span:hover{border-color:var(--orange);}
-.login-divider{height:1px;background:var(--brd2);margin:32px 0;}
-
-/* ═══════════════════════ HEADER ═══════════════════════ */
 header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);}
 .h-inner{max-width:1400px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .h-logo{display:flex;align-items:center;gap:12px;}
@@ -66,16 +59,12 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .h-stat-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--orange);}
 .h-user{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);cursor:pointer;border:1px solid var(--brd2);border-radius:4px;padding:6px 12px;transition:all .2s;}
 .h-user:hover{border-color:var(--orange);color:var(--orange);}
-
-/* PROGRESS RING */
 .ring-wrap{display:flex;align-items:center;gap:10px;}
 .pring{position:relative;width:48px;height:48px;}
 .pring svg{transform:rotate(-90deg);}
 .pring-bg{fill:none;stroke:var(--brd2);stroke-width:3;}
 .pring-fill{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;stroke-dasharray:119.4;stroke-dashoffset:119.4;transition:stroke-dashoffset 1s ease;filter:drop-shadow(0 0 4px var(--orange));}
 .pring-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--orange);}
-
-/* ═══════════════════════ TIMER BAR ═══════════════════════ */
 .tbar{display:none;background:var(--bg2);border-bottom:1px solid var(--brd);padding:8px 0;}
 .tbar.on{display:block;}
 .tbar-inner{max-width:1400px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:16px;}
@@ -87,21 +76,14 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .tdisp{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;color:var(--orange);min-width:60px;text-align:right;}
 .tdisp.warn{color:#f59e0b;}
 .tdisp.danger{color:var(--red);}
-
-/* ═══════════════════════ EXPIRED ═══════════════════════ */
 .expired{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.97);align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:40px;}
 .expired.on{display:flex;}
 .exp-ico{font-size:56px;margin-bottom:20px;}
 .exp-title{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;color:var(--red);margin-bottom:16px;}
 .exp-txt{color:var(--mid);font-size:15px;line-height:1.8;max-width:440px;margin-bottom:28px;}
 .exp-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);border:1px solid var(--brd2);border-radius:6px;padding:12px 24px;}
-
-/* ═══════════════════════ WRAP ═══════════════════════ */
 .wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 32px;}
-
-/* ═══════════════════════ HERO ═══════════════════════ */
 .hero{padding:60px 0 48px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;border-bottom:1px solid var(--brd);}
-.hero-left{}
 .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--orange);}
 .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,88px);line-height:.95;letter-spacing:-1px;margin-bottom:16px;}
@@ -110,8 +92,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .hero-right{text-align:right;}
 .hero-big-num{font-family:'Bebas Neue',sans-serif;font-size:120px;line-height:1;color:var(--brd2);letter-spacing:-4px;}
 .hero-big-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:-16px;}
-
-/* PHASES STRIP */
 .phases-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:8px;overflow:hidden;margin:40px 0;}
 .ph{background:var(--bg2);padding:16px 20px;cursor:pointer;transition:background .2s;}
 .ph:hover{background:var(--bg3);}
@@ -122,11 +102,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .ph-range{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);}
 .ph-prog{height:2px;background:var(--brd2);border-radius:1px;margin-top:8px;overflow:hidden;}
 .ph-fill{height:100%;background:var(--orange);border-radius:1px;width:0%;transition:width 1s;}
-
-/* MAIN LAYOUT */
 .layout{display:grid;grid-template-columns:240px 1fr;gap:24px;padding:32px 0 80px;}
-
-/* SIDEBAR */
 .sidebar{position:sticky;top:96px;height:calc(100vh - 116px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--brd2) transparent;}
 .sidebar::-webkit-scrollbar{width:3px;}
 .sidebar::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:2px;}
@@ -141,14 +117,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .dbtn.locked{opacity:.3;cursor:not-allowed;}
 .dbtn-n{font-family:'JetBrains Mono',monospace;font-size:10px;min-width:24px;color:inherit;}
 .dbtn-s{margin-left:auto;font-size:11px;}
-
-/* CONTENT */
 .content{min-height:600px;}
 .daycard{background:var(--bg2);border:1px solid var(--brd2);border-radius:12px;overflow:hidden;display:none;animation:slide .3s ease;}
 .daycard.on{display:block;}
 @keyframes slide{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-
-/* CARD HEAD */
 .card-head{padding:32px 36px 28px;border-bottom:1px solid var(--brd);position:relative;overflow:hidden;}
 .card-head::after{content:'';position:absolute;top:0;right:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,107,26,.04));pointer-events:none;}
 .card-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
@@ -157,8 +129,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .vtag{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:3px;padding:3px 9px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);}
 .card-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;margin-bottom:8px;line-height:1.1;}
 .card-sub{color:var(--mid);font-size:13px;line-height:1.7;max-width:600px;}
-
-/* CARD BODY */
 .card-body{padding:0 36px 36px;}
 .sec{padding:24px 0;border-bottom:1px solid rgba(34,34,34,.6);}
 .sec:last-child{border-bottom:none;}
@@ -167,31 +137,21 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .sec-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--orange);}
 .sec-txt{color:var(--mid);font-size:13px;line-height:1.8;}
 .sec-txt strong{color:var(--white);font-weight:600;}
-
-/* TASKS */
 .tasks{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:6px;}
 .task{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:rgba(255,107,26,.04);border:1px solid rgba(255,107,26,.1);border-radius:6px;font-size:12px;color:var(--mid);line-height:1.6;}
 .task::before{content:'→';color:var(--orange);font-size:11px;margin-top:1px;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
-
-/* PROMPT BOX */
 .pbox{background:#050505;border:1px solid var(--brd2);border-left:3px solid var(--orange);border-radius:6px;padding:18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange3);line-height:1.8;margin-top:6px;position:relative;white-space:pre-wrap;}
 .pbox::before{content:'// PROMPT';display:block;color:var(--dim);font-size:9px;letter-spacing:2px;margin-bottom:10px;}
 .copybtn{position:absolute;top:10px;right:10px;background:rgba(255,107,26,.1);border:1px solid rgba(255,107,26,.2);border-radius:4px;color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;letter-spacing:1px;transition:all .2s;}
 .copybtn:hover{background:rgba(255,107,26,.2);}
-
-/* BIZ CARD */
 .bizcard{background:rgba(255,107,26,.06);border:1px solid rgba(255,107,26,.15);border-radius:8px;padding:18px;margin-top:6px;}
 .bizprice{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--orange);margin-bottom:6px;}
 .bizdet{font-size:12px;color:var(--mid);line-height:1.7;}
-
-/* START BANNER */
 .start-banner{margin:0 36px 36px;background:linear-gradient(135deg,rgba(255,107,26,.1),rgba(255,107,26,.03));border:1px solid rgba(255,107,26,.2);border-radius:10px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .start-txt h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px;}
 .start-txt p{font-size:12px;color:var(--mid);font-family:'JetBrains Mono',monospace;}
 .startbtn{padding:13px 28px;background:var(--orange);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .startbtn:hover{background:var(--orange2);transform:translateY(-1px);}
-
-/* SUBMIT */
 .subarea{margin:0 36px 36px;background:var(--bg3);border:1px solid var(--brd2);border-radius:10px;padding:24px;}
 .sub-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:14px;}
 .subtxt{width:100%;min-height:130px;background:#050505;border:1px solid var(--brd2);border-radius:6px;color:var(--white);font-family:'JetBrains Mono',monospace;font-size:12px;padding:14px;resize:vertical;outline:none;transition:border-color .2s;line-height:1.7;}
@@ -199,27 +159,19 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .subtxt::placeholder{color:var(--dim);}
 .subbtn{margin-top:14px;width:100%;padding:14px;background:var(--orange);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;cursor:pointer;transition:all .2s;}
 .subbtn:hover{background:var(--orange2);transform:translateY(-1px);}
-
-/* COPY PROMPT BANNER */
 .copy-banner{margin:0 36px 36px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:10px;padding:24px;}
 .copy-banner-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:12px;}
 .copy-banner-txt{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:16px;}
 .copy-banner-box{background:#050505;border:1px solid rgba(34,197,94,.15);border-radius:6px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);line-height:1.8;white-space:pre-wrap;margin-bottom:14px;}
 .copy-green-btn{padding:11px 20px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:6px;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
 .copy-green-btn:hover{background:rgba(34,197,94,.2);}
-
-/* DONE AREA */
 .done-area{margin:0 36px 36px;background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.12);border-radius:10px;padding:24px;}
 .done-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:10px;}
 .done-work{font-size:12px;color:var(--dim);font-family:'JetBrains Mono',monospace;line-height:1.7;}
-
-/* LOCKED */
 .locked-view{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center;}
 .lock-ico{font-size:40px;margin-bottom:16px;opacity:.2;}
 .lock-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--dim);margin-bottom:10px;}
 .lock-txt{color:var(--dim);font-size:13px;line-height:1.7;max-width:320px;font-family:'JetBrains Mono',monospace;}
-
-/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(10,10,10,.9);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:20px;}
 .modal-bg.on{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--brd2);border-radius:12px;padding:32px;max-width:520px;width:100%;animation:rise .3s ease;position:relative;}
@@ -232,8 +184,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .mbtn.pri{background:var(--orange);color:#000;}
 .mbtn.sec{background:transparent;border:1px solid var(--brd2);color:var(--mid);}
 .mbtn:hover{transform:translateY(-1px);}
-
-/* NOTES PANEL */
 .notes-panel{position:fixed;right:-360px;top:0;bottom:0;width:340px;background:var(--bg2);border-left:1px solid var(--brd);z-index:150;transition:right .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
 .notes-panel.on{right:0;}
 .notes-head{padding:18px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;}
@@ -249,15 +199,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .notes-foot{padding:14px;border-top:1px solid var(--brd);}
 .notes-exp{width:100%;padding:11px;background:transparent;border:1px solid var(--brd2);border-radius:6px;color:var(--mid);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;}
 .notes-exp:hover{border-color:var(--orange);color:var(--orange);}
-
-/* FAB */
 .fab{position:fixed;bottom:28px;right:28px;z-index:100;width:44px;height:44px;border-radius:50%;background:var(--bg2);border:1px solid var(--brd2);color:var(--orange);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.5);transition:all .2s;}
 .fab:hover{transform:scale(1.08);border-color:var(--orange);}
-
-/* TOAST */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1px solid var(--orange);border-radius:6px;padding:12px 22px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);z-index:400;transition:transform .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;}
 .toast.on{transform:translateX(-50%) translateY(0);}
-
 @media(max-width:768px){.layout{grid-template-columns:1fr;}.sidebar{position:static;height:auto;}.h-stats{display:none;}.hero{grid-template-columns:1fr;}.hero-right{display:none;}}
 </style>
 </head>
@@ -285,10 +230,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
     <div class="login-h">120 jours pour<br><em>tout changer.</em></div>
     <div id="loginForm">
       <div class="field"><label>Nom d'utilisateur</label><input type="text" id="lu" placeholder="ton_username" autocomplete="username"/></div>
-      <div class="field"><label>Mot de passe</label><input type="password" id="lp" placeholder="••••••••" autocomplete="current-password" onkeydown="if(e.key==='Enter')handleLogin()"/></div>
+      <div class="field"><label>Mot de passe</label><input type="password" id="lp" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')handleLogin()"/></div>
       <button class="login-btn" onclick="handleLogin()">CONNEXION</button>
       <div class="login-err" id="lerr"></div>
-      <div class="login-switch">Pas de compte ? <span id="toReg()">Créer mon accès</span></div>
+      <div class="login-switch">Pas de compte ? <span id="toReg">Créer mon accès</span></div>
     </div>
     <div id="regForm" style="display:none">
       <div class="field"><label>Nom d'utilisateur</label><input type="text" id="ru" placeholder="ex: paulo_agentia"/></div>
@@ -296,7 +241,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
       <div class="field"><label>Confirmer</label><input type="password" id="rc" placeholder="••••••••"/></div>
       <button class="login-btn" onclick="handleReg()">CRÉER MON COMPTE</button>
       <div class="login-err" id="rerr"></div>
-      <div class="login-switch">Déjà un compte ? <span id="toLogin()">Se connecter</span></div>
+      <div class="login-switch">Déjà un compte ? <span id="toLogin">Se connecter</span></div>
     </div>
   </div>
 </div>
@@ -353,7 +298,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 </header>
 
 <div class="wrap">
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Bootcamp actif — 120 jours</div>
@@ -365,8 +309,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
       <div class="hero-big-lbl">jours de formation</div>
     </div>
   </div>
-
-  <!-- PHASES -->
   <div class="phases-strip">
     <div class="ph on" onclick="filterPhase(1)"><div class="ph-num">Phase 01</div><div class="ph-name">Fondamentaux</div><div class="ph-range">J.1–20</div><div class="ph-prog"><div class="ph-fill" id="pf1"></div></div></div>
     <div class="ph" onclick="filterPhase(2)"><div class="ph-num">Phase 02</div><div class="ph-name">Automatisation</div><div class="ph-range">J.21–45</div><div class="ph-prog"><div class="ph-fill" id="pf2"></div></div></div>
@@ -374,15 +316,12 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
     <div class="ph" onclick="filterPhase(4)"><div class="ph-num">Phase 04</div><div class="ph-name">Cas Réels</div><div class="ph-range">J.76–100</div><div class="ph-prog"><div class="ph-fill" id="pf4"></div></div></div>
     <div class="ph" onclick="filterPhase(5)"><div class="ph-num">Phase 05</div><div class="ph-name">Branding & Vente</div><div class="ph-range">J.101–120</div><div class="ph-prog"><div class="ph-fill" id="pf5"></div></div></div>
   </div>
-
-  <!-- LAYOUT -->
   <div class="layout">
     <div class="sidebar"><div class="sb-section"><div class="sb-lbl">Sessions</div><div class="daylist" id="daylist"></div></div></div>
     <div class="content" id="content"></div>
   </div>
 </div>
 
-<!-- NOTES PANEL -->
 <div class="notes-panel" id="notesPanel">
   <div class="notes-head"><span class="notes-ttl">📓 Mes Notes</span><button class="notes-cls" onclick="toggleNotes()">✕</button></div>
   <div class="notes-body" id="notesBody"><div class="notes-empty" id="notesEmpty">Aucune note pour l'instant.</div></div>
@@ -394,210 +333,88 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════
-// DATA — 120 SESSIONS
-// ═══════════════════════════════════════
-const TOOLS = {
-  p1: ['Claude (Chat & Projects)','Prompting RCTF','Notion','Whisperflow','Make (bases)','n8n (bases)','Webhooks','JSON & APIs REST','Logique conditionnelle','Google Workspace','Variables & filtres','Gestion erreurs','Zapier vs Make','Architecture IA','Documentation'],
-  p2: ['Make avancé','n8n flows','Connexion CRM','Email automation','Airtable','Slack automation','Google Sheets + IA','Routeurs & agrégateurs','Itérateurs','Tests & debug','Monitoring workflows','Brevo / Instantly','Apollo.io','Hunter.io','Optimisation Make'],
-  p3: ['Architecture agents IA','Memory patterns','Tool calling Claude','Agent Commercial v1','Agent Productivité v1','Claude API directe','Chains de prompts','Orchestration multi-agents','State management','Perplexity pour veille','Tests & validation agents','Optimisation prompts','Déploiement agent','Maintenance & logs','Version production'],
-  p4: ['Audit client terrain','Cahier des charges','MVP en 48h','Démo client live','Feedback & itération','Pricing ROI','Contrat type','Onboarding client','Formation utilisateurs','Support & SAV','Mesure ROI réel','Case study documenté','Portfolio pro','Témoignages & preuves','Référencement client'],
-  p5: ['Positionnement & niche','Personal branding','Site vitrine (Framer)','LinkedIn stratégie','Stack marketing complet','Cold email IA','LinkedIn outreach','Démo commerciale','Objections & closing','Proposition + tarification','Premier client 7j','Setup + abonnement','Onboarding & contrat','ROI & case study','Upsell & fidélisation','Partenaires','Automatiser sa prospection','Portfolio & témoignages','Stratégie 6 mois','Bilan 120j']
-};
+const TOOLS={p1:['Claude (Chat & Projects)','Prompting RCTF','Notion','Whisperflow','Make (bases)','n8n (bases)','Webhooks','JSON & APIs REST','Logique conditionnelle','Google Workspace','Variables & filtres','Gestion erreurs','Zapier vs Make','Architecture IA','Documentation'],p2:['Make avancé','n8n flows','Connexion CRM','Email automation','Airtable','Slack automation','Google Sheets + IA','Routeurs & agrégateurs','Itérateurs','Tests & debug','Monitoring workflows','Brevo / Instantly','Apollo.io','Hunter.io','Optimisation Make'],p3:['Architecture agents IA','Memory patterns','Tool calling Claude','Agent Commercial v1','Agent Productivité v1','Claude API directe','Chains de prompts','Orchestration multi-agents','State management','Perplexity pour veille','Tests & validation agents','Optimisation prompts','Déploiement agent','Maintenance & logs','Version production'],p4:['Audit client terrain','Cahier des charges','MVP en 48h','Démo client live','Feedback & itération','Pricing ROI','Contrat type','Onboarding client','Formation utilisateurs','Support & SAV','Mesure ROI réel','Case study documenté','Portfolio pro','Témoignages & preuves','Référencement client'],p5:['Positionnement & niche','Personal branding','Site vitrine (Framer)','LinkedIn stratégie','Stack marketing complet','Cold email IA','LinkedIn outreach','Démo commerciale','Objections & closing','Proposition + tarification','Premier client 7j','Setup + abonnement','Onboarding & contrat','ROI & case study','Upsell & fidélisation','Partenaires','Automatiser sa prospection','Portfolio & témoignages','Stratégie 6 mois','Bilan 120j']};
 
-function genSec(day, phTools, ph) {
-  const topic = phTools[(day-1) % phTools.length];
-  const phNames = ['','Fondamentaux IA','Automatisation','Agents IA','Cas Réels','Branding & Vente'];
+function genSec(day,phTools,ph){
+  const topic=phTools[(day-1)%phTools.length];
+  const phNames=['','Fondamentaux IA','Automatisation','Agents IA','Cas Réels','Branding & Vente'];
   return [
     {ico:'🎯',ttl:'Objectif du jour',txt:`Maîtriser <strong>${topic}</strong> dans le cadre de la Phase ${ph} — ${phNames[ph]}. À la fin de cette session, tu dois avoir produit quelque chose de concret et réutilisable.`},
     {ico:'🧠',ttl:'Notion clé',txt:`Envoie le prompt de relance <strong>"Jour ${day} sur 120"</strong> dans le chat mentor pour recevoir l'explication complète et contextualisée de cette notion.`},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:[`Lance le prompt de relance "Jour ${day} sur 120" dans le chat pour recevoir les exercices détaillés, étape par étape, adaptés à ton niveau actuel.`]},
     {ico:'🤖',ttl:'Mini-agent à construire',txt:`Outil principal du jour : <strong>${topic}</strong>.\n\nLe mini-agent spécifique à construire est détaillé dans ta session quotidienne du chat mentor.`},
     {ico:'💬',ttl:'Prompt à créer',prompt:`Envoie exactement ce message dans le chat :\n\n"Donne-moi mon plan de travail du jour (jour ${day} sur 120)\n\nCe que j'ai produit hier : [décris en 2-3 lignes]"`},
-    {ico:'🏢',ttl:'Cas réel d\'entreprise',txt:`Cas d'usage business lié à <strong>${topic}</strong> — développé et chiffré dans ta session quotidienne avec ton mentor.`},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:`Cas d'usage business lié à <strong>${topic}</strong> — développé et chiffré dans ta session quotidienne avec ton mentor.`},
     {ico:'✅',ttl:'Résultat attendu',txt:`À la fin de cette session, tu dois avoir :\n1. Produit un livrable concret lié à ${topic}\n2. Noté ce que tu as appris\n3. Copié le prompt de correction ci-dessous pour l'envoyer dans le chat`}
   ];
 }
 
-const DATA = [];
-
-// Phase 1 (1-20) — detailed for first 5
-const p1detailed = [
+const DATA=[];
+const p1detailed=[
   {title:"Comprendre l'IA Agentique",sub:"Poser les bases. Tu dois savoir exactement ce qu'est un agent IA avant d'en construire un.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:'Distinguer IA générative vs IA agentique. Comprendre pourquoi les agents IA ont de la valeur pour les entreprises et combien ça vaut.'},
     {ico:'🧠',ttl:'Notion clé',txt:'<strong>Agent IA = Percevoir → Raisonner → Agir.</strong><br><br>Un chatbot répond. Un agent agit. Il enchaîne des actions autonomes pour atteindre un objectif : récupérer des infos, envoyer des emails, mettre à jour un CRM — sans toi à chaque étape.<br><br>La différence qui fait que les entreprises paient 800€ à 3000€ de setup.'},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:["Ouvre Claude dans ce chat","Teste ce prompt : 'Tu es un assistant commercial. J'ai un RDV demain avec une PME de 20 personnes qui vend des logiciels RH. Génère-moi une fiche de 5 points clés à savoir avant ce RDV.'","Refais-le en ajoutant le nom de l'entreprise, le secteur exact, le nom du décideur","Compare les deux réponses — note la différence de qualité","Identifie ce qui manque encore pour que ce soit vraiment utilisable"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Construis un <strong>prompt de veille pré-RDV structuré et réutilisable</strong>. C\'est la brique fondamentale de ton futur Agent Commercial.\n\nOutil : Claude uniquement — pas besoin de Make ou n8n aujourd\'hui.'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'Tu es un assistant de veille commerciale expert.\nJe m\'apprête à rencontrer [ENTREPRISE] dans le secteur [SECTEUR].\n\nGénère :\n1. Résumé activité (3 lignes max)\n2. 3 problèmes que je pourrais résoudre\n3. Angle d\'accroche recommandé\n4. 2 questions à poser absolument\n\nSois concis. Orienté résultat. Pas de blabla.'},
-    {ico:'🏢',ttl:'Cas réel d\'entreprise',txt:'<strong>Secteur : Agence immobilière (10-30 agents)</strong>',biz:{price:'Setup 800€ + 300€/mois',det:'Chaque commercial perd 30-45 min avant chaque RDV à chercher des infos. Un agent IA de veille pré-RDV élimine ça. 10 agents × 5h/semaine récupérées = valeur immédiate. ROI évident, vente facile.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Ton prompt de veille pré-RDV finalisé et testé\n2. Ta définition de "agent IA" dans tes propres mots (5 lignes)\n3. 3 types d\'entreprises où tu pourrais vendre ce cas d\'usage\n4. Copie le prompt de correction ci-dessous → envoie-le dans le chat'}
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Construis un <strong>prompt de veille pré-RDV structuré et réutilisable</strong>. C'est la brique fondamentale de ton futur Agent Commercial.\n\nOutil : Claude uniquement — pas besoin de Make ou n8n aujourd'hui."},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"Tu es un assistant de veille commerciale expert.\nJe m'apprête à rencontrer [ENTREPRISE] dans le secteur [SECTEUR].\n\nGénère :\n1. Résumé activité (3 lignes max)\n2. 3 problèmes que je pourrais résoudre\n3. Angle d'accroche recommandé\n4. 2 questions à poser absolument\n\nSois concis. Orienté résultat. Pas de blabla."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : Agence immobilière (10-30 agents)</strong>',biz:{price:'Setup 800€ + 300€/mois',det:"Chaque commercial perd 30-45 min avant chaque RDV à chercher des infos. Un agent IA de veille pré-RDV élimine ça. 10 agents × 5h/semaine récupérées = valeur immédiate. ROI évident, vente facile."}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Ton prompt de veille pré-RDV finalisé et testé\n2. Ta définition de 'agent IA' dans tes propres mots (5 lignes)\n3. 3 types d'entreprises où tu pourrais vendre ce cas d'usage\n4. Copie le prompt de correction ci-dessous → envoie-le dans le chat"}
   ]},
-  {title:'Prompting Avancé — Structure RCTF',sub:'Un bon prompt = 80% du travail. Apprends à donner des instructions précises à Claude.',secs:[
+  {title:'Prompting Avancé — Structure RCTF',sub:"Un bon prompt = 80% du travail. Apprends à donner des instructions précises à Claude.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:'Maîtriser la structure RCTF et créer des prompts professionnels réutilisables comme templates.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>RCTF : Rôle — Contexte — Tâche — Format.</strong><br><br>Rôle : qui est Claude dans cette situation ?<br>Contexte : quelle info lui donner ?<br>Tâche : qu\'est-ce qu\'il doit faire exactement ?<br>Format : comment structurer la réponse ?<br><br>Sans ces 4 éléments, les réponses sont génériques. Avec, elles sont professionnelles.'},
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>RCTF : Rôle — Contexte — Tâche — Format.</strong><br><br>Rôle : qui est Claude dans cette situation ?<br>Contexte : quelle info lui donner ?<br>Tâche : qu'est-ce qu'il doit faire exactement ?<br>Format : comment structurer la réponse ?<br><br>Sans ces 4 éléments, les réponses sont génériques. Avec, elles sont professionnelles."},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:["Prends le prompt de veille du Jour 1","Identifie les 4 composantes RCTF manquantes","Réécris-le en appliquant strictement RCTF","Compare les deux réponses côte à côte","Crée 3 variations pour 3 secteurs différents","Documente tes meilleurs prompts dans Notion"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Construis ton <strong>premier template de prompt commercial réutilisable</strong> avec des variables [CROCHETS] pour n\'importe quel prospect.\n\nOutil : Claude + Notion pour documenter.'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'RÔLE : Tu es un consultant commercial B2B senior, 15 ans d\'expérience.\nCONTEXTE : Je prépare un RDV avec [NOM], [POSTE] chez [ENTREPRISE], secteur [SECTEUR], CA estimé [CA€].\nTÂCHE : Génère une stratégie d\'approche avec : angle d\'accroche, 3 pain points probables, proposition de valeur adaptée, 3 objections anticipées + réponses.\nFORMAT : Sections claires, bullet points, max 400 mots. Orienté closing.'},
-    {ico:'🏢',ttl:'Cas réel d\'entreprise',txt:'<strong>Secteur : Cabinet de recrutement (10-15 consultants)</strong>',biz:{price:'Setup 1200€ + 400€/mois',det:'50 RDV/mois × 45 min de prep = 37h perdues. Avec des prompts RCTF automatisés, 5 min par brief. 32h récupérées = €€€. Vends ce gain de temps comme ROI immédiat.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Template RCTF finalisé avec variables\n2. 3 exemples testés (avant/après)\n3. Bibliothèque de prompts Jour 2 dans Notion\n4. Prompt de correction → chat mentor'}
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Construis ton <strong>premier template de prompt commercial réutilisable</strong> avec des variables [CROCHETS] pour n'importe quel prospect.\n\nOutil : Claude + Notion pour documenter."},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"RÔLE : Tu es un consultant commercial B2B senior, 15 ans d'expérience.\nCONTEXTE : Je prépare un RDV avec [NOM], [POSTE] chez [ENTREPRISE], secteur [SECTEUR], CA estimé [CA€].\nTÂCHE : Génère une stratégie d'approche avec : angle d'accroche, 3 pain points probables, proposition de valeur adaptée, 3 objections anticipées + réponses.\nFORMAT : Sections claires, bullet points, max 400 mots. Orienté closing."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : Cabinet de recrutement (10-15 consultants)</strong>',biz:{price:'Setup 1200€ + 400€/mois',det:'50 RDV/mois × 45 min de prep = 37h perdues. Avec des prompts RCTF automatisés, 5 min par brief. 32h récupérées = €€€. Vends ce gain de temps comme ROI immédiat.'}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Template RCTF finalisé avec variables\n2. 3 exemples testés (avant/après)\n3. Bibliothèque de prompts Jour 2 dans Notion\n4. Prompt de correction → chat mentor"}
   ]},
-  {title:'Claude — Chat, Projects & Instructions Système',sub:'Comprendre l\'écosystème Claude pour l\'utiliser comme un pro, pas comme un débutant.',secs:[
+  {title:"Claude — Chat, Projects & Instructions Système",sub:"Comprendre l'écosystème Claude pour l'utiliser comme un pro, pas comme un débutant.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:'Maîtriser les différents modes Claude et configurer ton espace de travail personnel pour les 120 jours.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>Claude.ai Chat</strong> : conversations libres, tests rapides, brainstorming.<br><br><strong>Projects Claude</strong> : mémoire persistante + fichiers de référence. Tu upload tes templates, Claude les garde en contexte permanent.<br><br><strong>Instructions Système</strong> : tu configures Claude une fois, il se comporte toujours comme tu veux — ton assistant consultant IA dédié.<br><br>C\'est la différence entre un outil générique et un assistant personnalisé.'},
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Claude.ai Chat</strong> : conversations libres, tests rapides, brainstorming.<br><br><strong>Projects Claude</strong> : mémoire persistante + fichiers de référence. Tu upload tes templates, Claude les garde en contexte permanent.<br><br><strong>Instructions Système</strong> : tu configures Claude une fois, il se comporte toujours comme tu veux — ton assistant consultant IA dédié.<br><br>C'est la différence entre un outil générique et un assistant personnalisé."},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un Project Claude nommé 'AGENTIA — Bootcamp'","Rédige tes instructions système (template ci-dessous)","Upload tes meilleurs prompts des jours 1 et 2","Teste une conversation dans le Project vs Chat classique","Observe comment Claude adapte ses réponses avec le contexte"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Configure ton <strong>espace de travail Claude professionnel</strong> :\n- Instructions système personnalisées\n- Templates de prompts chargés\n- Contexte consultant IA défini\n\nC\'est ton assistant dédié pour les 120 jours.'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'INSTRUCTIONS SYSTÈME — Project AGENTIA :\n\nTu es mon assistant consultant IA spécialisé. Mon objectif : devenir consultant IA en 120 jours et signer mes premiers clients.\n\nRègles permanentes :\n- Toujours penser ROI et valeur business\n- Proposer des versions vendables de ce qu\'on construit\n- Me corriger sans complaisance\n- Structurer tes réponses de façon actionnable\n- Penser comme un consultant terrain, pas un chercheur\n\nMon niveau : débutant automatisation, intermédiaire prompting.'},
-    {ico:'🏢',ttl:'Cas réel d\'entreprise',txt:'<strong>Service vendable : "Setup Claude Pro"</strong>',biz:{price:'600€ de setup',det:'Configurer un Project Claude pro pour un consultant ou dirigeant = 2h de travail pour toi = 600€. Valeur client : 2h/jour économisées × 365j × 50€/h = 36 500€/an. Ton service à 600€ vaut 60x son prix.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Project Claude AGENTIA configuré\n2. Instructions système rédigées et testées\n3. Tes 3 meilleurs prompts chargés\n4. Prompt de correction → chat mentor'}
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Configure ton <strong>espace de travail Claude professionnel</strong> :\n- Instructions système personnalisées\n- Templates de prompts chargés\n- Contexte consultant IA défini\n\nC'est ton assistant dédié pour les 120 jours."},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"INSTRUCTIONS SYSTÈME — Project AGENTIA :\n\nTu es mon assistant consultant IA spécialisé. Mon objectif : devenir consultant IA en 120 jours et signer mes premiers clients.\n\nRègles permanentes :\n- Toujours penser ROI et valeur business\n- Proposer des versions vendables de ce qu'on construit\n- Me corriger sans complaisance\n- Structurer tes réponses de façon actionnable\n- Penser comme un consultant terrain, pas un chercheur\n\nMon niveau : débutant automatisation, intermédiaire prompting."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Service vendable : "Setup Claude Pro"</strong>',biz:{price:'600€ de setup',det:"Configurer un Project Claude pro pour un consultant ou dirigeant = 2h de travail pour toi = 600€. Valeur client : 2h/jour économisées × 365j × 50€/h = 36 500€/an. Ton service à 600€ vaut 60x son prix."}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Project Claude AGENTIA configuré\n2. Instructions système rédigées et testées\n3. Tes 3 meilleurs prompts chargés\n4. Prompt de correction → chat mentor"}
   ]},
-  {title:'Workflows & Architecture de Flux',sub:'Avant d\'automatiser, comprendre comment les données circulent entre les outils.',secs:[
+  {title:"Workflows & Architecture de Flux",sub:"Avant d'automatiser, comprendre comment les données circulent entre les outils.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:'Penser en "flux de données" — la compétence fondamentale de tout consultant en automatisation IA.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>Trigger → Action → Output.</strong><br><br>Tout workflow suit ce schéma de base :<br>• Trigger = l\'événement déclencheur (email reçu, formulaire soumis, heure programmée)<br>• Action = ce qu\'on fait (envoyer à Claude, écrire dans CRM, envoyer email)<br>• Output = le résultat final pour l\'utilisateur<br><br>Comprendre ce schéma = comprendre n\'importe quelle automatisation.'},
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Trigger → Action → Output.</strong><br><br>Tout workflow suit ce schéma de base :<br>• Trigger = l'événement déclencheur (email reçu, formulaire soumis, heure programmée)<br>• Action = ce qu'on fait (envoyer à Claude, écrire dans CRM, envoyer email)<br>• Output = le résultat final pour l'utilisateur<br><br>Comprendre ce schéma = comprendre n'importe quelle automatisation."},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:["Sur papier ou Notion, dessine le flux de ton Agent Commercial","Identifie : le trigger, les 5 étapes, l'output","Fais pareil pour l'Agent Productivité","Pour chaque étape : quel outil l'exécute ? Claude ? Make ? Gmail ?","Identifie les points de friction potentiels"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Crée tes <strong>2 schémas de flux</strong> :\n\nAgent Commercial : Prospect identifié → Veille IA → Fiche préparée → Email suivi → Proposition générée\n\nAgent Productivité : Email reçu → Tri IA → Résumé → Brouillon réponse → Priorité agenda'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'Analyse ce workflow que je viens de dessiner pour mon Agent Commercial :\n[COLLE TON SCHÉMA ICI]\n\nDis-moi :\n1. Les étapes manquantes\n2. Les points de friction potentiels\n3. Les meilleurs outils pour chaque étape (Claude, Make, n8n, autres)\n4. Comment simplifier pour une v1 vendable\n5. Estimation du temps de build\nSois critique et pragmatique.'},
-    {ico:'🏢',ttl:'Cas réel d\'entreprise',txt:'<strong>Secteur : Startup SaaS B2B (5-20 personnes)</strong>',biz:{price:'Setup 2500€ + 600€/mois',det:'2 commerciaux perdent 4h/jour en tâches manuelles. Workflow automatisé (lead → enrichissement → email Claude → CRM) = 4h récupérées/jour. ROI en 2 semaines.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Schéma flux Agent Commercial (Notion ou papier photo)\n2. Schéma flux Agent Productivité\n3. Liste des outils identifiés pour chaque étape\n4. Prompt de correction → chat mentor'}
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Crée tes <strong>2 schémas de flux</strong> :\n\nAgent Commercial : Prospect identifié → Veille IA → Fiche préparée → Email suivi → Proposition générée\n\nAgent Productivité : Email reçu → Tri IA → Résumé → Brouillon réponse → Priorité agenda"},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"Analyse ce workflow que je viens de dessiner pour mon Agent Commercial :\n[COLLE TON SCHÉMA ICI]\n\nDis-moi :\n1. Les étapes manquantes\n2. Les points de friction potentiels\n3. Les meilleurs outils pour chaque étape (Claude, Make, n8n, autres)\n4. Comment simplifier pour une v1 vendable\n5. Estimation du temps de build\nSois critique et pragmatique."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : Startup SaaS B2B (5-20 personnes)</strong>',biz:{price:'Setup 2500€ + 600€/mois',det:'2 commerciaux perdent 4h/jour en tâches manuelles. Workflow automatisé (lead → enrichissement → email Claude → CRM) = 4h récupérées/jour. ROI en 2 semaines.'}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Schéma flux Agent Commercial (Notion ou papier photo)\n2. Schéma flux Agent Productivité\n3. Liste des outils identifiés pour chaque étape\n4. Prompt de correction → chat mentor"}
   ]},
-  {title:'Make — Premier Contact & Premier Scénario',sub:'Premier contact avec Make. Comprendre l\'interface et exécuter ton premier workflow.',secs:[
-    {ico:'🎯',ttl:'Objectif du jour',txt:'Créer un compte Make, comprendre l\'interface, et exécuter ton premier scénario fonctionnel.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>Make = l\'outil d\'automatisation no-code le plus puissant du marché.</strong><br><br>Scénario = un workflow automatisé<br>Module = une action dans ce workflow<br>Connection = autorisation d\'accès à un service<br><br>Tu construis visuellement en glissant-déposant des modules. Pas une ligne de code. C\'est ça qui rend ce métier accessible.'},
+  {title:"Make — Premier Contact & Premier Scénario",sub:"Premier contact avec Make. Comprendre l'interface et exécuter ton premier workflow.",secs:[
+    {ico:'🎯',ttl:'Objectif du jour',txt:"Créer un compte Make, comprendre l'interface, et exécuter ton premier scénario fonctionnel."},
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Make = l'outil d'automatisation no-code le plus puissant du marché.</strong><br><br>Scénario = un workflow automatisé<br>Module = une action dans ce workflow<br>Connection = autorisation d'accès à un service<br><br>Tu construis visuellement en glissant-déposant des modules. Pas une ligne de code. C'est ça qui rend ce métier accessible."},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un compte gratuit sur make.com","Prends 5 minutes à explorer l'interface sans rien toucher","Crée ton premier scénario : 'Quand un Google Form est soumis → envoie un email de confirmation'","Execute le scénario manuellement","Observe les logs d'exécution — comprends ce qui se passe"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'<strong>Scénario Make #1</strong> : Formulaire → Email\n\nTrigger : Google Forms — nouvelle réponse\nAction : Gmail — envoyer email de confirmation\n\nSimple. Mais tu apprends la logique Make qui s\'appliquera à tous tes agents.'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'Je commence à apprendre Make pour automatiser des workflows IA.\n\nExplique-moi :\n1. La différence concrète entre Make, Zapier et n8n (avantages/limites)\n2. Les 5 modules Make les plus utilisés en consulting IA\n3. Les meilleures pratiques pour structurer un scénario pro\n4. Les 3 erreurs classiques d\'un débutant Make\n5. Comment déboguer quand un scénario ne fonctionne pas\n\nParle-moi comme à un futur consultant, pas comme à un dev.'},
-    {ico:'🏢',ttl:'Cas réel d\'entreprise',txt:'<strong>Secteur : E-commerce (boutique en ligne)</strong>',biz:{price:'Setup 1800€ + 350€/mois',det:'50 commandes/jour × 3 min de traitement manuel = 2h30/jour. Make : commande → email personnalisé Claude → stock → notification équipe. Zéro intervention. ROI immédiat.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Compte Make créé\n2. Premier scénario fonctionnel (capture d\'écran)\n3. Logs d\'exécution lus et compris\n4. Prompt de correction → chat mentor'}
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"<strong>Scénario Make #1</strong> : Formulaire → Email\n\nTrigger : Google Forms — nouvelle réponse\nAction : Gmail — envoyer email de confirmation\n\nSimple. Mais tu apprends la logique Make qui s'appliquera à tous tes agents."},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"Je commence à apprendre Make pour automatiser des workflows IA.\n\nExplique-moi :\n1. La différence concrète entre Make, Zapier et n8n (avantages/limites)\n2. Les 5 modules Make les plus utilisés en consulting IA\n3. Les meilleures pratiques pour structurer un scénario pro\n4. Les 3 erreurs classiques d'un débutant Make\n5. Comment déboguer quand un scénario ne fonctionne pas\n\nParle-moi comme à un futur consultant, pas comme à un dev."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : E-commerce (boutique en ligne)</strong>',biz:{price:'Setup 1800€ + 350€/mois',det:'50 commandes/jour × 3 min de traitement manuel = 2h30/jour. Make : commande → email personnalisé Claude → stock → notification équipe. Zéro intervention. ROI immédiat.'}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Compte Make créé\n2. Premier scénario fonctionnel (capture d'écran)\n3. Logs d'exécution lus et compris\n4. Prompt de correction → chat mentor"}
   ]}
 ];
 
-// SESSIONS PROMPTING AVANCÉ (6, 7, 8)
-const promptingSessions = [
-  {day:6,phase:1,title:"Itération de Prompts — La Méthode Pro",sub:"Un bon prompt ne se crée pas du premier coup. L'itération est le secret des meilleurs consultants IA.",secs:[
-    {ico:'🎯',ttl:'Objectif du jour',txt:'Maîtriser la méthode d'itération de prompts pour passer d'un résultat moyen à un résultat exceptionnel en 3-5 cycles.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>La méthode ITÉRER :</strong><br><br>1. Lance un prompt de base<br>2. Identifie ce qui manque ou est faux<br>3. Ajoute une contrainte spécifique<br>4. Relance et compare<br>5. Répète jusqu'à la qualité voulue<br><br>La plupart des gens lancent un prompt, reçoivent une réponse médiocre et pensent que l'IA est limitée. Les pros savent qu'un bon résultat demande 3-5 itérations minimum.'},
-    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Prends le prompt de veille pré-RDV du Jour 1","Lance-le tel quel et note la qualité : /10","Identifie 3 faiblesses dans la réponse","Ajoute une contrainte pour chaque faiblesse","Relance et compare les deux réponses","Répète jusqu'à obtenir une réponse que tu noterais 9/10","Documente l'évolution dans Notion"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Crée un <strong>méta-prompt d'itération</strong> :
-
-Un prompt qui analyse un autre prompt et suggère des améliorations spécifiques.
-
-Outil : Claude uniquement.'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'Tu es un expert en prompt engineering pour consultants IA.
-
-Analyse ce prompt que j'ai créé :
-[COLLE TON PROMPT ICI]
-
-Donne-moi :
-1. Note globale /10 avec justification
-2. Les 3 faiblesses principales
-3. Les 3 améliorations prioritaires
-4. Une version améliorée complète
-5. Ce que la version améliorée apportera comme différence
-
-Sois précis et exigeant. Pas de compliments inutiles.'},
-    {ico:'🏢',ttl:'Cas réel d'entreprise',txt:'<strong>Service : Audit & Optimisation de Prompts</strong>',biz:{price:'500-1500€ par audit',det:'Les PME qui utilisent déjà ChatGPT ou Claude ont souvent des prompts mal construits. Tu audites leurs prompts existants, tu les améliores, tu formes leur équipe. 1 journée de travail = 500-1500€. Porte d'entrée parfaite vers des missions plus longues.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Ton prompt de veille amélioré par 3 cycles d'itération
-2. Méta-prompt d'analyse créé et testé
-3. Méthode ITÉRER documentée dans Notion
-4. Prompt de correction → chat mentor'}
-  ]},
-  {day:7,phase:1,title:"Chain-of-Thought & Prompts Complexes",sub:"Apprends à faire raisonner Claude étape par étape pour des résultats d'une précision chirurgicale.",secs:[
-    {ico:'🎯',ttl:'Objectif du jour',txt:'Maîtriser le Chain-of-Thought prompting pour des tâches complexes nécessitant du raisonnement multi-étapes.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>Chain-of-Thought (CoT) = forcer Claude à raisonner étape par étape.</strong><br><br>Sans CoT : "Quel est le meilleur angle commercial pour ce prospect ?" → réponse générique<br><br>Avec CoT : "Analyse d'abord le secteur, puis identifie les pain points probables, puis déduis l'angle commercial optimal, puis explique ton raisonnement" → réponse précise et justifiée<br><br>La différence : Claude montre son raisonnement. Tu peux le corriger si une étape est fausse. Résultats 40-60% meilleurs.'},
-    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un prompt standard pour analyser un prospect","Crée la même demande en version Chain-of-Thought","Compare les deux réponses côte à côte","Note les différences de qualité et de précision","Identifie 3 cas d'usage de ton activité où le CoT est essentiel","Crée un template CoT réutilisable pour tes analyses commerciales"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Construis un <strong>agent d'analyse prospect CoT</strong> :
-
-Input : nom entreprise + secteur + poste du décideur
-Raisonnement chaîné : secteur → pain points → contexte décideur → angle → questions → objections
-Output : brief complet structuré
-
-Outil : Claude avec prompt CoT.'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'Analyse ce prospect en raisonnant étape par étape :
-
-Entreprise : [NOM]
-Secteur : [SECTEUR]
-CA estimé : [CA]
-Poste décideur : [POSTE]
-
-Etape 1 — Analyse du secteur : quels sont les 3 enjeux majeurs de ce secteur en ce moment ?
-Etape 2 — Pain points probables : quels problèmes ce type d'entreprise rencontre-t-elle ?
-Etape 3 — Profil décideur : qu'est-ce qui motive ce poste ? Quelles sont ses priorités ?
-Etape 4 — Angle commercial : quel est le meilleur angle d'accroche basé sur les étapes 1-3 ?
-Etape 5 — Synthèse : formule une phrase d'accroche de 2 lignes maximum.
-
-Montre ton raisonnement à chaque étape.'},
-    {ico:'🏢',ttl:'Cas réel d'entreprise',txt:'<strong>Secteur : Cabinet de conseil en stratégie</strong>',biz:{price:'Setup 2000€ + 500€/mois',det:'Un cabinet qui fait 30 pitchs/mois perd 3h par pitch à préparer les analyses. Agent CoT : entreprise cible → analyse chaînée → brief complet en 2 min. 90h/mois récupérées. À 150€/h = 13 500€ de valeur créée/mois.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Template prompt CoT finalisé
-2. Agent d'analyse prospect CoT opérationnel
-3. Comparaison prompt standard vs CoT documentée
-4. Prompt de correction → chat mentor'}
-  ]},
-  {day:8,phase:1,title:"Méta-Prompts & Prompts qui Créent des Prompts",sub:"Le niveau ultime : utiliser Claude pour générer et optimiser tes propres prompts à ta place.",secs:[
-    {ico:'🎯',ttl:'Objectif du jour',txt:'Maîtriser les méta-prompts — des prompts qui génèrent d'autres prompts — pour démultiplier ta productivité.'},
-    {ico:'🧠',ttl:'Notion clé',txt:'<strong>Un méta-prompt = un prompt qui parle de prompts.</strong><br><br>Au lieu de passer 30 min à créer un prompt parfait, tu demandes à Claude de le créer pour toi en lui donnant le contexte et l'objectif.<br><br>Applications concrètes :<br>• Générer des prompts pour tes clients<br>• Créer une bibliothèque de prompts métier<br>• Adapter des prompts existants à de nouveaux contextes<br>• Tester plusieurs versions automatiquement<br><br>C'est ce qui te permet de livrer de la valeur à tes clients 5x plus vite.'},
-    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un méta-prompt qui génère des prompts de veille pour n'importe quel secteur","Teste-le sur 3 secteurs différents (immo, SaaS, RH)","Crée un méta-prompt qui adapte n'importe quel prompt à un nouveau contexte","Construis ta bibliothèque de 10 prompts métier dans Notion","Crée un méta-prompt de 'raffinement' qui améliore n'importe quel prompt existant"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:'Construis ton <strong>générateur de prompts métier</strong> :
-
-Input : secteur + cas d'usage + niveau de détail voulu
-Output : prompt professionnel prêt à l'emploi + 2 variantes
-
-C'est une livrables vendable à tes clients (bibliothèque de prompts sur mesure).'},
-    {ico:'💬',ttl:'Prompt à créer',prompt:'Tu es un expert en prompt engineering spécialisé dans les prompts pour consultants IA B2B.
-
-Crée un prompt professionnel pour le cas d'usage suivant :
-- Secteur client : [SECTEUR]
-- Cas d'usage : [CAS D'USAGE ex: veille prospect / analyse concurrence / brief commercial]
-- Niveau de détail voulu : [COURT/MOYEN/DÉTAILLÉ]
-- Persona Claude : [RÔLE que doit jouer Claude]
-
-Livre :
-1. Le prompt optimisé avec variables [CROCHETS]
-2. Instructions d'utilisation (30 mots max)
-3. Exemple de résultat attendu
-4. Une variante simplifiée
-
-Le prompt doit être immédiatement utilisable par quelqu'un qui ne connaît pas l'IA.'},
-    {ico:'🏢',ttl:'Cas réel d'entreprise',txt:'<strong>Service vendable : "Bibliothèque de Prompts Métier"</strong>',biz:{price:'800-2000€ par bibliothèque',det:'Tu livres à un client une bibliothèque de 20-50 prompts sur mesure pour son métier. 2-3 jours de travail pour toi = 800-2000€. Avec tes méta-prompts, tu génères et affines en quelques heures. Marge excellente. Et c'est souvent la porte d'entrée vers un contrat d'agent IA.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:'1. Méta-prompt générateur de prompts opérationnel
-2. 3 prompts générés pour 3 secteurs différents
-3. Bibliothèque de 10 prompts métier dans Notion
-4. Prompt de correction → chat mentor'}
-  ]}
-];
-
-// Build DATA array
-// Build DATA array
 for(let d=1;d<=120;d++){
-  const ph = d<=20?1:d<=45?2:d<=75?3:d<=100?4:5;
-  const phTools = ph===1?TOOLS.p1:ph===2?TOOLS.p2:ph===3?TOOLS.p3:ph===4?TOOLS.p4:TOOLS.p5;
+  const ph=d<=20?1:d<=45?2:d<=75?3:d<=100?4:5;
+  const phTools=ph===1?TOOLS.p1:ph===2?TOOLS.p2:ph===3?TOOLS.p3:ph===4?TOOLS.p4:TOOLS.p5;
   const phNames=['','Fondamentaux','Automatisation','Agents IA','Cas Réels','Branding & Vente'];
-
-  if(d<=5 && p1detailed[d-1]){
+  if(d<=5&&p1detailed[d-1]){
     DATA.push({day:d,phase:ph,...p1detailed[d-1]});
-  } else if(d<=8 && promptingSessions[d-6]){
-    DATA.push(promptingSessions[d-6]);
   } else {
     const tIdx=(d-1)%phTools.length;
     const topic=phTools[tIdx];
-    DATA.push({
-      day:d,phase:ph,
-      title:topic,
-      sub:`Phase ${ph} — ${phNames[ph]}. Lance ton prompt de relance "Jour ${d} sur 120" dans le chat mentor pour le contenu complet.`,
-      secs:genSec(d,phTools,ph)
-    });
+    DATA.push({day:d,phase:ph,title:topic,sub:`Phase ${ph} — ${phNames[ph]}. Lance ton prompt de relance "Jour ${d} sur 120" dans le chat mentor pour le contenu complet.`,secs:genSec(d,phTools,ph)});
   }
 }
 
-// ═══════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════
 let S={cur:1,unlocked:[1],done:[],notes:[],subs:{}};
 function loadS(){try{const r=localStorage.getItem('agentia_s');if(r)S={...S,...JSON.parse(r)};}catch(e){}}
 function saveS(){try{localStorage.setItem('agentia_s',JSON.stringify(S));}catch(e){}}
-
-// ═══════════════════════════════════════
-// AUTH
-// ═══════════════════════════════════════
-function getUsers(){try{return JSON.parse(localStorage.getItem('agentia_users')||'{}');}catch(e){return {};}}
+function getUsers(){try{return JSON.parse(localStorage.getItem('agentia_users')||'{}');}catch(e){return{};}}
 function saveUsers(u){localStorage.setItem('agentia_users',JSON.stringify(u));}
 function getSession(){try{return JSON.parse(sessionStorage.getItem('agentia_sess')||'null');}catch(e){return null;}}
 function setSession(u){sessionStorage.setItem('agentia_sess',JSON.stringify({u,ts:Date.now()}));}
@@ -638,12 +455,8 @@ function handleReg(){
 
 function logout(){sessionStorage.removeItem('agentia_sess');location.reload();}
 
-// ═══════════════════════════════════════
-// TIMER
-// ═══════════════════════════════════════
 const SESS=90*60;
 let tLeft=SESS,tInt=null,tOn=false;
-
 function todayKey(){const d=new Date();return`agentia_t_${d.getFullYear()}_${d.getMonth()}_${d.getDate()}`;}
 function getTState(){try{return JSON.parse(localStorage.getItem(todayKey())||'null');}catch(e){return null;}}
 function saveTState(o){localStorage.setItem(todayKey(),JSON.stringify(o));}
@@ -659,17 +472,7 @@ function startSession(day){
   renderContent(day,true);
   updateTimer();
   clearInterval(tInt);
-  tInt=setInterval(()=>{
-    tLeft--;
-    saveTState({start:Date.now()-(SESS-tLeft)*1000,exp:false});
-    updateTimer();
-    if(tLeft<=0){
-      clearInterval(tInt);tOn=false;
-      saveTState({start:null,exp:true});
-      document.getElementById('tbar').classList.remove('on');
-      document.getElementById('expScreen').classList.add('on');
-    }
-  },1000);
+  tInt=setInterval(()=>{tLeft--;saveTState({start:Date.now()-(SESS-tLeft)*1000,exp:false});updateTimer();if(tLeft<=0){clearInterval(tInt);tOn=false;saveTState({start:null,exp:true});document.getElementById('tbar').classList.remove('on');document.getElementById('expScreen').classList.add('on');}},1000);
 }
 
 function updateTimer(){
@@ -692,17 +495,11 @@ function checkTimer(){
     if(tLeft>0){
       tOn=true;document.getElementById('tbar').classList.add('on');updateTimer();
       clearInterval(tInt);
-      tInt=setInterval(()=>{
-        tLeft--;updateTimer();saveTState({start:ex.start,exp:false});
-        if(tLeft<=0){clearInterval(tInt);tOn=false;saveTState({start:null,exp:true});document.getElementById('tbar').classList.remove('on');document.getElementById('expScreen').classList.add('on');}
-      },1000);
+      tInt=setInterval(()=>{tLeft--;updateTimer();saveTState({start:ex.start,exp:false});if(tLeft<=0){clearInterval(tInt);tOn=false;saveTState({start:null,exp:true});document.getElementById('tbar').classList.remove('on');document.getElementById('expScreen').classList.add('on');}},1000);
     }
   }
 }
 
-// ═══════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════
 function renderSidebar(){
   const list=document.getElementById('daylist');list.innerHTML='';
   const bounds=[{s:1,e:20,n:'Phase 1 — Fondamentaux'},{s:21,e:45,n:'Phase 2 — Automatisation'},{s:46,e:75,n:'Phase 3 — Agents IA'},{s:76,e:100,n:'Phase 4 — Cas Réels'},{s:101,e:120,n:'Phase 5 — Branding & Vente'}];
@@ -727,12 +524,10 @@ function renderContent(day,go){
   const dd=DATA[day-1];
   const isU=S.unlocked.includes(day),isDone=S.done.includes(day);
   const card=document.createElement('div');card.className='daycard on';
-
   if(!isU){
     card.innerHTML=`<div class="locked-view"><div class="lock-ico">⚿</div><div class="lock-title">SESSION ${day} VERROUILLÉE</div><div class="lock-txt">Valide la session ${day-1} dans le chat mentor pour débloquer celle-ci.</div></div>`;
     area.appendChild(card);return;
   }
-
   let secsHtml='';
   dd.secs.forEach(s=>{
     let ch='';
@@ -742,10 +537,8 @@ function renderContent(day,go){
     else ch=`<div class="sec-txt">${s.txt.replace(/\n/g,'<br>')}</div>`;
     secsHtml+=`<div class="sec"><div class="sec-head"><span class="sec-icon">${s.ico}</span><span class="sec-title">${s.ttl}</span></div>${ch}</div>`;
   });
-
   const exp=isExpired();const tGo=tOn||go;
   const corrPrompt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n[DÉCRIS EN 2-3 LIGNES CE QUE TU AS FAIT ET PRODUIT]\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;
-
   let bottom='';
   if(isDone){
     bottom=`<div class="done-area"><div class="done-title">✓ Session validée par ton mentor</div><div class="done-work">${S.subs[day]||'Travail validé.'}</div></div>`;
@@ -754,119 +547,27 @@ function renderContent(day,go){
   } else if(!tGo){
     bottom=`<div class="start-banner"><div class="start-txt"><h3>PRÊT À DÉMARRER ?</h3><p>1h30 de session. Chaque minute compte.</p></div><button class="startbtn" onclick="startSession(${day})">▶ DÉMARRER</button></div>`;
   } else {
-    bottom=`
-    <div class="subarea">
-      <div class="sub-title">📝 Soumets ton travail du jour</div>
-      <textarea class="subtxt" id="subtxt" placeholder="Décris ici ce que tu as produit aujourd'hui : prompts créés, exercices réalisés, outils testés, résultats obtenus, questions, blocages...">${S.subs[day]||''}</textarea>
-      <button class="subbtn" onclick="submitWork(${day})">SAUVEGARDER MON TRAVAIL</button>
-    </div>
-    <div class="copy-banner">
-      <div class="copy-banner-title">📋 Prompt de correction — à envoyer dans le chat</div>
-      <div class="copy-banner-txt">Copie ce prompt et envoie-le dans le chat Claude. Ton mentor corrigera ton travail et te dira si tu peux passer au jour suivant.</div>
-      <div class="copy-banner-box" id="corrBox">${corrPrompt}</div>
-      <button class="copy-green-btn" onclick="copyCorrPrompt(${day})">COPIER LE PROMPT DE CORRECTION</button>
-    </div>`;
+    bottom=`<div class="subarea"><div class="sub-title">📝 Soumets ton travail du jour</div><textarea class="subtxt" id="subtxt" placeholder="Décris ici ce que tu as produit aujourd'hui...">${S.subs[day]||''}</textarea><button class="subbtn" onclick="submitWork(${day})">SAUVEGARDER MON TRAVAIL</button></div><div class="copy-banner"><div class="copy-banner-title">📋 Prompt de correction — à envoyer dans le chat</div><div class="copy-banner-txt">Copie ce prompt et envoie-le dans le chat Claude. Ton mentor corrigera ton travail et te dira si tu peux passer au jour suivant.</div><div class="copy-banner-box" id="corrBox">${corrPrompt}</div><button class="copy-green-btn" onclick="copyCorrPrompt(${day})">COPIER LE PROMPT DE CORRECTION</button></div>`;
   }
-
-  card.innerHTML=`
-    <div class="card-head">
-      <div class="card-meta">
-        <span class="dtag">JOUR ${String(day).padStart(2,'0')}</span>
-        <span class="ptag">Phase ${dd.phase} — ${PHN[dd.phase]}</span>
-        ${isDone?'<span class="vtag">✓ VALIDÉ</span>':''}
-      </div>
-      <div class="card-title">${dd.title}</div>
-      <div class="card-sub">${dd.sub}</div>
-    </div>
-    <div class="card-body">${secsHtml}</div>
-    ${bottom}`;
+  card.innerHTML=`<div class="card-head"><div class="card-meta"><span class="dtag">JOUR ${String(day).padStart(2,'0')}</span><span class="ptag">Phase ${dd.phase} — ${PHN[dd.phase]}</span>${isDone?'<span class="vtag">✓ VALIDÉ</span>':''}</div><div class="card-title">${dd.title}</div><div class="card-sub">${dd.sub}</div></div><div class="card-body">${secsHtml}</div>${bottom}`;
   area.appendChild(card);
 }
 
 function selectDay(d){S.cur=d;saveS();renderSidebar();renderContent(d);updateStats();document.getElementById('content').scrollIntoView({behavior:'smooth',block:'start'});}
+function submitWork(day){const ta=document.getElementById('subtxt');const txt=ta?.value?.trim();if(!txt){showToast('⚠️ Décris ton travail avant de sauvegarder !');return;}S.subs[day]=txt;saveS();saveNote(day,txt);showToast('✅ Travail sauvegardé ! Copie le prompt de correction ci-dessous.');}
+function copyCorrPrompt(day){const ta=document.getElementById('subtxt');const work=ta?.value?.trim()||S.subs[day]||'[travail non renseigné]';const txt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n${work}\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;navigator.clipboard.writeText(txt).then(()=>showToast('✅ Prompt copié ! Colle-le dans le chat Claude.')).catch(()=>{});}
+function markDone(day){if(!S.done.includes(day))S.done.push(day);const next=day+1;if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);saveS();renderContent(day);renderSidebar();updateStats();celebrate();showToast('🎉 Session '+day+' validée ! Session '+(day+1)+' débloquée.');}
 
-function submitWork(day){
-  const ta=document.getElementById('subtxt');
-  const txt=ta?.value?.trim();
-  if(!txt){showToast('⚠️ Décris ton travail avant de sauvegarder !');return;}
-  S.subs[day]=txt;saveS();saveNote(day,txt);
-  showToast('✅ Travail sauvegardé ! Copie le prompt de correction ci-dessous.');
-}
-
-function copyCorrPrompt(day){
-  const box=document.getElementById('corrBox');
-  const ta=document.getElementById('subtxt');
-  const work=ta?.value?.trim()||S.subs[day]||'[travail non renseigné]';
-  const txt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n${work}\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;
-  navigator.clipboard.writeText(txt).then(()=>showToast('✅ Prompt copié ! Colle-le dans le chat Claude.')).catch(()=>{});
-}
-
-function markDone(day){
-  if(!S.done.includes(day))S.done.push(day);
-  const next=day+1;
-  if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);
-  saveS();renderContent(day);renderSidebar();updateStats();celebrate();
-  showToast('🎉 Session '+day+' validée ! Session '+(day+1)+' débloquée.');
-}
-
-// ═══════════════════════════════════════
-// NOTES
-// ═══════════════════════════════════════
-function saveNote(day,content){
-  S.notes=S.notes.filter(n=>n.day!==day);
-  S.notes.unshift({id:Date.now(),day,title:`Session ${day} — ${DATA[day-1]?.title}`,content,date:new Date().toLocaleDateString('fr-FR')});
-  saveS();renderNotes();
-}
-function renderNotes(){
-  const body=document.getElementById('notesBody'),empty=document.getElementById('notesEmpty');
-  body.querySelectorAll('.note-item').forEach(e=>e.remove());
-  if(!S.notes.length){if(empty)empty.style.display='block';return;}
-  if(empty)empty.style.display='none';
-  S.notes.forEach(n=>{
-    const el=document.createElement('div');el.className='note-item';
-    el.innerHTML=`<div class="note-ttl">${n.title}</div><div class="note-prev">${n.content}</div><div class="note-date">${n.date}</div>`;
-    el.onclick=()=>dlNote(n);body.appendChild(el);
-  });
-}
-function dlNote(n){
-  const c=`AGENTIA — ${n.title}\nDate: ${n.date}\n\n${'='.repeat(50)}\n\n${n.content}`;
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));
-  a.download=`AGENTIA_Session${n.day}_${n.date.replace(/\//g,'-')}.txt`;a.click();
-  showToast('📥 Note téléchargée !');
-}
-function exportAll(){
-  if(!S.notes.length){showToast('Aucune note à exporter');return;}
-  let c=`AGENTIA — Toutes mes notes\n${new Date().toLocaleDateString('fr-FR')}\n\n${'='.repeat(60)}\n\n`;
-  S.notes.forEach(n=>{c+=`SESSION ${n.day} — ${n.title}\n${n.date}\n${'─'.repeat(40)}\n${n.content}\n\n`;});
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));
-  a.download=`AGENTIA_AllNotes.txt`;a.click();showToast('📦 Export complet !');
-}
+function saveNote(day,content){S.notes=S.notes.filter(n=>n.day!==day);S.notes.unshift({id:Date.now(),day,title:`Session ${day} — ${DATA[day-1]?.title}`,content,date:new Date().toLocaleDateString('fr-FR')});saveS();renderNotes();}
+function renderNotes(){const body=document.getElementById('notesBody'),empty=document.getElementById('notesEmpty');body.querySelectorAll('.note-item').forEach(e=>e.remove());if(!S.notes.length){if(empty)empty.style.display='block';return;}if(empty)empty.style.display='none';S.notes.forEach(n=>{const el=document.createElement('div');el.className='note-item';el.innerHTML=`<div class="note-ttl">${n.title}</div><div class="note-prev">${n.content}</div><div class="note-date">${n.date}</div>`;el.onclick=()=>dlNote(n);body.appendChild(el);});}
+function dlNote(n){const c=`AGENTIA — ${n.title}\nDate: ${n.date}\n\n${'='.repeat(50)}\n\n${n.content}`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));a.download=`AGENTIA_Session${n.day}_${n.date.replace(/\//g,'-')}.txt`;a.click();showToast('📥 Note téléchargée !');}
+function exportAll(){if(!S.notes.length){showToast('Aucune note à exporter');return;}let c=`AGENTIA — Toutes mes notes\n${new Date().toLocaleDateString('fr-FR')}\n\n${'='.repeat(60)}\n\n`;S.notes.forEach(n=>{c+=`SESSION ${n.day} — ${n.title}\n${n.date}\n${'─'.repeat(40)}\n${n.content}\n\n`;});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));a.download=`AGENTIA_AllNotes.txt`;a.click();showToast('📦 Export complet !');}
 function toggleNotes(){document.getElementById('notesPanel').classList.toggle('on');renderNotes();}
-
-// ═══════════════════════════════════════
-// UI
-// ═══════════════════════════════════════
-function showModal(ico,title,txt,actions){
-  document.getElementById('mico').textContent=ico;
-  document.getElementById('mtitle').textContent=title;
-  document.getElementById('mtxt').textContent=txt;
-  const acts=document.getElementById('macts');acts.innerHTML='';
-  actions.forEach(a=>{const b=document.createElement('button');b.className=`mbtn ${a.pri?'pri':'sec'}`;b.textContent=a.txt;b.onclick=a.fn;acts.appendChild(b);});
-  document.getElementById('modalBg').classList.add('on');
-}
+function showModal(ico,title,txt,actions){document.getElementById('mico').textContent=ico;document.getElementById('mtitle').textContent=title;document.getElementById('mtxt').textContent=txt;const acts=document.getElementById('macts');acts.innerHTML='';actions.forEach(a=>{const b=document.createElement('button');b.className=`mbtn ${a.pri?'pri':'sec'}`;b.textContent=a.txt;b.onclick=a.fn;acts.appendChild(b);});document.getElementById('modalBg').classList.add('on');}
 function closeModal(){document.getElementById('modalBg').classList.remove('on');}
-function copyP(btn){
-  const t=btn.parentElement.textContent.replace('COPIER','').replace('// PROMPT','').trim();
-  navigator.clipboard.writeText(t).then(()=>{btn.textContent='COPIÉ ✓';setTimeout(()=>btn.textContent='COPIER',2000);});
-}
+function copyP(btn){const t=btn.parentElement.textContent.replace('COPIER','').replace('// PROMPT','').trim();navigator.clipboard.writeText(t).then(()=>{btn.textContent='COPIÉ ✓';setTimeout(()=>btn.textContent='COPIER',2000);});}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500);}
-function celebrate(){
-  for(let i=0;i<20;i++)setTimeout(()=>{
-    const p=document.createElement('div');
-    p.style.cssText=`position:fixed;width:7px;height:7px;border-radius:50%;background:${['#ff6b1a','#ff8c42','#22c55e','#f0ebe3'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*60}%;z-index:999;pointer-events:none;animation:pop 1.3s ease-out forwards;`;
-    document.body.appendChild(p);setTimeout(()=>p.remove(),1300);
-  },i*60);
-}
+function celebrate(){for(let i=0;i<20;i++)setTimeout(()=>{const p=document.createElement('div');p.style.cssText=`position:fixed;width:7px;height:7px;border-radius:50%;background:${['#ff6b1a','#ff8c42','#22c55e','#f0ebe3'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*60}%;z-index:999;pointer-events:none;animation:pop 1.3s ease-out forwards;`;document.body.appendChild(p);setTimeout(()=>p.remove(),1300);},i*60);}
 const ps=document.createElement('style');ps.textContent='@keyframes pop{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-160px) scale(0);opacity:0}}';document.head.appendChild(ps);
 
 function updateStats(){
@@ -877,11 +578,7 @@ function updateStats(){
   document.getElementById('rpct').textContent=pct+'%';
   document.getElementById('heroNum').textContent=120-done;
   const circ=119.4;document.getElementById('rfill').style.strokeDashoffset=circ-(pct/100)*circ;
-  [1,2,3,4,5].forEach(ph=>{
-    const ps=[1,21,46,76,101][ph-1],pe=[20,45,75,100,120][ph-1];
-    const tot=pe-ps+1,dn=S.done.filter(d=>d>=ps&&d<=pe).length;
-    const b=document.getElementById('pf'+ph);if(b)b.style.width=Math.round((dn/tot)*100)+'%';
-  });
+  [1,2,3,4,5].forEach(ph=>{const ps=[1,21,46,76,101][ph-1],pe=[20,45,75,100,120][ph-1];const tot=pe-ps+1,dn=S.done.filter(d=>d>=ps&&d<=pe).length;const b=document.getElementById('pf'+ph);if(b)b.style.width=Math.round((dn/tot)*100)+'%';});
 }
 
 function filterPhase(ph){
@@ -890,9 +587,6 @@ function filterPhase(ph){
   selectDay(S.unlocked.includes(ps)?ps:S.cur);
 }
 
-// ═══════════════════════════════════════
-// BOOT
-// ═══════════════════════════════════════
 function bootApp(username){
   loadS();
   if(!S.unlocked.includes(1))S.unlocked.push(1);
@@ -908,9 +602,9 @@ function init(){
   }
 }
 
-   document.getElementById('toReg').onclick = showReg;
-document.getElementById('toLogin').onclick = showLogin; 
-     init();
+document.getElementById('toReg').onclick = showReg;
+document.getElementById('toLogin').onclick = showLogin;
+init();
 </script>
 </body>
 </html>
