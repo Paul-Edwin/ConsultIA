@@ -651,16 +651,22 @@ function markDone(day){
   const next=day+1;
   if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);
   saveS();
-  // Reset chrono à 1h30 pour la session suivante
-  if(tInt)clearInterval(tInt);
+  // Arrêt complet du chrono + reset visuel
+  clearInterval(tInt);
+  tInt=null;
   tOn=false;
   tLeft=SESS_TOTAL;
   saveTState({startTs:null,expired:false});
+  // Reset affichage barre chrono
+  const fill=document.getElementById('tfill'),disp=document.getElementById('tdisp');
+  fill.style.width='100%';
+  fill.className='tfill green';
+  disp.textContent='1:30:00';
+  disp.className='tdisp green';
   document.getElementById('tbar').classList.remove('on');
   document.getElementById('expScreen').classList.remove('on');
   celebrate();
-  showToast(`🎉 Session ${day} validée ! Chrono remis à 1h30 pour la session ${day+1}.`);
-  // Navigue vers la session suivante après 1.5s
+  showToast(`🎉 Session ${day} validée ! Chrono remis à 1h30 — Session ${day+1} débloquée.`);
   setTimeout(()=>{
     if(next<=120){S.cur=next;saveS();renderSidebar();renderContent(next,false);updateStats();}
     else{renderContent(day,false);renderSidebar();updateStats();}
