@@ -651,12 +651,12 @@ function markDone(day){
   const next=day+1;
   if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);
   saveS();
-  // Arrêt complet du chrono + reset visuel
+  // Arrêt complet du chrono + SUPPRESSION du localStorage timer
   clearInterval(tInt);
   tInt=null;
   tOn=false;
   tLeft=SESS_TOTAL;
-  saveTState({startTs:null,expired:false});
+  localStorage.removeItem(todayKey()); // ← efface complètement la mémoire du chrono
   // Reset affichage barre chrono
   const fill=document.getElementById('tfill'),disp=document.getElementById('tdisp');
   fill.style.width='100%';
@@ -744,8 +744,4 @@ function init(){
 }
 
 document.getElementById('toReg').onclick=showReg;
-document.getElementById('toLogin').onclick=showLogin;
-init();
-</script>
-</body>
-</html>
+document.getElementById('t
