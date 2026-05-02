@@ -288,7 +288,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
       <div class="field"><label>Mot de passe</label><input type="password" id="lp" placeholder="••••••••" autocomplete="current-password" onkeydown="if(e.key==='Enter')handleLogin()"/></div>
       <button class="login-btn" onclick="handleLogin()">CONNEXION</button>
       <div class="login-err" id="lerr"></div>
-      <div class="login-switch">Pas de compte ? <span onclick="showReg()">Créer mon accès</span></div>
+      <div class="login-switch">Pas de compte ? <span id="toReg()">Créer mon accès</span></div>
     </div>
     <div id="regForm" style="display:none">
       <div class="field"><label>Nom d'utilisateur</label><input type="text" id="ru" placeholder="ex: paulo_agentia"/></div>
@@ -296,7 +296,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
       <div class="field"><label>Confirmer</label><input type="password" id="rc" placeholder="••••••••"/></div>
       <button class="login-btn" onclick="handleReg()">CRÉER MON COMPTE</button>
       <div class="login-err" id="rerr"></div>
-      <div class="login-switch">Déjà un compte ? <span onclick="showLogin()">Se connecter</span></div>
+      <div class="login-switch">Déjà un compte ? <span id="toLogin()">Se connecter</span></div>
     </div>
   </div>
 </div>
@@ -907,7 +907,10 @@ function init(){
     bootApp(sess.u);
   }
 }
-init();
+
+   document.getElementById('toReg').onclick = showReg;
+document.getElementById('toLogin').onclick = showLogin; 
+     init();
 </script>
 </body>
 </html>
