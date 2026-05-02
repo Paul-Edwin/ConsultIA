@@ -7,23 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0a0a;
-  --bg2:#111111;
-  --bg3:#1a1a1a;
-  --orange:#ff6b1a;
-  --orange2:#ff8c42;
-  --orange3:#ffad75;
-  --white:#f0ebe3;
-  --dim:#555555;
-  --mid:#888888;
-  --brd:#222222;
-  --brd2:#333333;
-  --green:#22c55e;
-  --red:#ef4444;
+  --bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;
+  --orange:#ff6b1a;--orange2:#ff8c42;--orange3:#ffad75;
+  --white:#f0ebe3;--dim:#555555;--mid:#888888;
+  --brd:#222222;--brd2:#333333;
+  --green:#22c55e;--red:#ef4444;--amber:#f59e0b;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;cursor:default;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4;}
 
 /* LOGIN */
@@ -33,7 +25,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 @keyframes rise{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 .login-logo-row{display:flex;align-items:center;gap:14px;margin-bottom:48px;}
 .login-logo-hex{width:48px;height:48px;}
-.login-brand{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:3px;color:var(--white);}
+.login-brand{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:3px;}
 .login-brand span{color:var(--orange);}
 .login-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-bottom:8px;}
 .login-h{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;margin-bottom:32px;line-height:1;}
@@ -49,6 +41,33 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .login-switch{margin-top:20px;text-align:center;font-size:13px;color:var(--dim);}
 .login-switch span{color:var(--orange);cursor:pointer;border-bottom:1px solid transparent;transition:border-color .2s;}
 .login-switch span:hover{border-color:var(--orange);}
+
+/* TIMER BAR */
+.tbar{display:none;background:var(--bg2);border-bottom:1px solid var(--brd);padding:8px 0;position:sticky;top:64px;z-index:99;}
+.tbar.on{display:block;}
+.tbar-inner{max-width:1400px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:16px;}
+.tbar-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;white-space:nowrap;}
+.ttrack{flex:1;height:6px;background:var(--brd2);border-radius:3px;overflow:hidden;}
+.tfill{height:100%;border-radius:3px;transition:width 1s linear, background .5s;width:100%;}
+.tfill.green{background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.5);}
+.tfill.amber{background:var(--amber);box-shadow:0 0 8px rgba(245,158,11,.5);}
+.tfill.red{background:var(--red);box-shadow:0 0 8px rgba(239,68,68,.6);animation:pulse-bar 1s ease infinite;}
+@keyframes pulse-bar{0%,100%{opacity:1;}50%{opacity:.6;}}
+.tdisp{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:600;min-width:70px;text-align:right;transition:color .5s;}
+.tdisp.green{color:var(--green);}
+.tdisp.amber{color:var(--amber);}
+.tdisp.red{color:var(--red);animation:pulse-txt 1s ease infinite;}
+@keyframes pulse-txt{0%,100%{opacity:1;}50%{opacity:.5;}}
+
+/* EXPIRED OVERLAY */
+.expired{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.97);align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:40px;}
+.expired.on{display:flex;}
+.exp-ico{font-size:64px;margin-bottom:20px;animation:shake 0.5s ease infinite;}
+@keyframes shake{0%,100%{transform:rotate(0);}25%{transform:rotate(-5deg);}75%{transform:rotate(5deg);}}
+.exp-title{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:2px;color:var(--red);margin-bottom:16px;}
+.exp-txt{color:var(--mid);font-size:15px;line-height:1.8;max-width:440px;margin-bottom:28px;}
+.exp-note{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);border:1px solid var(--brd2);border-radius:6px;padding:14px 28px;}
+.exp-time{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange);margin-top:16px;}
 
 /* HEADER */
 header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);}
@@ -70,21 +89,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .pring-fill{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;stroke-dasharray:119.4;stroke-dashoffset:119.4;transition:stroke-dashoffset 1s ease;filter:drop-shadow(0 0 4px var(--orange));}
 .pring-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--orange);}
 
-/* TIMER BAR — informatif uniquement, ne bloque plus rien */
-.tbar{display:none;background:var(--bg2);border-bottom:1px solid var(--brd);padding:8px 0;}
-.tbar.on{display:block;}
-.tbar-inner{max-width:1400px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:16px;}
-.tbar-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;white-space:nowrap;}
-.tbar-info{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:1px;white-space:nowrap;}
-.ttrack{flex:1;height:4px;background:var(--brd2);border-radius:2px;overflow:hidden;}
-.tfill{height:100%;background:var(--orange);border-radius:2px;transition:width 1s linear,background .5s;width:100%;}
-.tfill.warn{background:#f59e0b;}
-.tfill.done-col{background:var(--green);}
-.tdisp{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;color:var(--orange);min-width:60px;text-align:right;}
-.tdisp.warn{color:#f59e0b;}
-.tdisp.done-col{color:var(--green);}
-
-/* MAIN LAYOUT */
+/* LAYOUT */
 .wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 32px;}
 .hero{padding:60px 0 48px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;border-bottom:1px solid var(--brd);}
 .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
@@ -106,7 +111,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .ph-prog{height:2px;background:var(--brd2);border-radius:1px;margin-top:8px;overflow:hidden;}
 .ph-fill{height:100%;background:var(--orange);border-radius:1px;width:0%;transition:width 1s;}
 .layout{display:grid;grid-template-columns:240px 1fr;gap:24px;padding:32px 0 80px;}
-.sidebar{position:sticky;top:96px;height:calc(100vh - 116px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--brd2) transparent;}
+.sidebar{position:sticky;top:130px;height:calc(100vh - 150px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--brd2) transparent;}
 .sidebar::-webkit-scrollbar{width:3px;}
 .sidebar::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:2px;}
 .sb-section{margin-bottom:24px;}
@@ -150,50 +155,36 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .bizcard{background:rgba(255,107,26,.06);border:1px solid rgba(255,107,26,.15);border-radius:8px;padding:18px;margin-top:6px;}
 .bizprice{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--orange);margin-bottom:6px;}
 .bizdet{font-size:12px;color:var(--mid);line-height:1.7;}
-
-/* START BANNER */
-.start-banner{margin:0 36px 36px;background:linear-gradient(135deg,rgba(255,107,26,.1),rgba(255,107,26,.03));border:1px solid rgba(255,107,26,.2);border-radius:10px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.start-banner{margin:0 36px 36px;background:linear-gradient(135deg,rgba(255,107,26,.1),rgba(255,107,26,.03));border:1px solid rgba(255,107,26,.2);border-radius:10px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .start-txt h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px;}
 .start-txt p{font-size:12px;color:var(--mid);font-family:'JetBrains Mono',monospace;}
 .startbtn{padding:13px 28px;background:var(--orange);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .startbtn:hover{background:var(--orange2);transform:translateY(-1px);}
-
-/* SUBMIT AREA */
-.subarea{margin:0 36px 36px;background:var(--bg3);border:1px solid var(--brd2);border-radius:10px;padding:24px;}
+.subarea{margin:0 36px 20px;background:var(--bg3);border:1px solid var(--brd2);border-radius:10px;padding:24px;}
 .sub-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:14px;}
 .subtxt{width:100%;min-height:130px;background:#050505;border:1px solid var(--brd2);border-radius:6px;color:var(--white);font-family:'JetBrains Mono',monospace;font-size:12px;padding:14px;resize:vertical;outline:none;transition:border-color .2s;line-height:1.7;}
 .subtxt:focus{border-color:var(--orange);}
 .subtxt::placeholder{color:var(--dim);}
 .subbtn{margin-top:14px;width:100%;padding:14px;background:var(--orange);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;cursor:pointer;transition:all .2s;}
 .subbtn:hover{background:var(--orange2);transform:translateY(-1px);}
-
-/* COPY PROMPT BANNER */
-.copy-banner{margin:0 36px 36px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:10px;padding:24px;}
+.copy-banner{margin:0 36px 20px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:10px;padding:24px;}
 .copy-banner-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:12px;}
 .copy-banner-txt{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:16px;}
 .copy-banner-box{background:#050505;border:1px solid rgba(34,197,94,.15);border-radius:6px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);line-height:1.8;white-space:pre-wrap;margin-bottom:14px;}
 .copy-green-btn{padding:11px 20px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:6px;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
 .copy-green-btn:hover{background:rgba(34,197,94,.2);}
-
-/* ✅ NOUVEAU — BOUTON VALIDER SESSION */
 .validate-banner{margin:0 36px 36px;background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.03));border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .validate-txt h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px;color:var(--green);}
 .validate-txt p{font-size:12px;color:var(--mid);font-family:'JetBrains Mono',monospace;line-height:1.6;}
 .validatebtn{padding:15px 32px;background:var(--green);border:none;border-radius:6px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:all .2s;box-shadow:0 0 20px rgba(34,197,94,.3);}
 .validatebtn:hover{background:#16a34a;transform:translateY(-2px);box-shadow:0 0 30px rgba(34,197,94,.5);}
-
-/* DONE AREA */
 .done-area{margin:0 36px 36px;background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.12);border-radius:10px;padding:24px;}
 .done-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:10px;}
 .done-work{font-size:12px;color:var(--dim);font-family:'JetBrains Mono',monospace;line-height:1.7;}
-
-/* LOCKED */
 .locked-view{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center;}
 .lock-ico{font-size:40px;margin-bottom:16px;opacity:.2;}
 .lock-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--dim);margin-bottom:10px;}
 .lock-txt{color:var(--dim);font-size:13px;line-height:1.7;max-width:320px;font-family:'JetBrains Mono',monospace;}
-
-/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(10,10,10,.9);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:20px;}
 .modal-bg.on{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--brd2);border-radius:12px;padding:32px;max-width:520px;width:100%;animation:rise .3s ease;position:relative;}
@@ -206,8 +197,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .mbtn.pri{background:var(--orange);color:#000;}
 .mbtn.sec{background:transparent;border:1px solid var(--brd2);color:var(--mid);}
 .mbtn:hover{transform:translateY(-1px);}
-
-/* NOTES PANEL */
 .notes-panel{position:fixed;right:-360px;top:0;bottom:0;width:340px;background:var(--bg2);border-left:1px solid var(--brd);z-index:150;transition:right .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
 .notes-panel.on{right:0;}
 .notes-head{padding:18px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;}
@@ -227,7 +216,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
 .fab:hover{transform:scale(1.08);border-color:var(--orange);}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1px solid var(--orange);border-radius:6px;padding:12px 22px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);z-index:400;transition:transform .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;}
 .toast.on{transform:translateX(-50%) translateY(0);}
-@media(max-width:768px){.layout{grid-template-columns:1fr;}.sidebar{position:static;height:auto;}.h-stats{display:none;}.hero{grid-template-columns:1fr;}.hero-right{display:none;}.validate-banner{flex-direction:column;}.start-banner{flex-direction:column;}}
+@media(max-width:768px){.layout{grid-template-columns:1fr;}.sidebar{position:static;height:auto;}.h-stats{display:none;}.hero{grid-template-columns:1fr;}.hero-right{display:none;}.validate-banner,.start-banner{flex-direction:column;}}
 </style>
 </head>
 <body>
@@ -239,8 +228,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
       <svg class="login-logo-hex" viewBox="0 0 48 48" fill="none">
         <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#ff6b1a" stroke-width="1.5" opacity=".4"/>
         <polygon points="24,8 38,16 38,32 24,40 10,32 10,16" fill="none" stroke="#ff6b1a" stroke-width="1" opacity=".7"/>
-        <circle cx="24" cy="24" r="4" fill="#ff6b1a"/>
-        <circle cx="24" cy="24" r="2" fill="#ffad75"/>
+        <circle cx="24" cy="24" r="4" fill="#ff6b1a"/><circle cx="24" cy="24" r="2" fill="#ffad75"/>
         <line x1="24" y1="10" x2="24" y2="20" stroke="#ff6b1a" stroke-width="1.5" opacity=".8"/>
         <line x1="24" y1="28" x2="24" y2="38" stroke="#ff6b1a" stroke-width="1.5" opacity=".8"/>
         <line x1="11" y1="17" x2="19.5" y2="22" stroke="#ff6b1a" stroke-width="1.5" opacity=".8"/>
@@ -270,14 +258,22 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
   </div>
 </div>
 
-<!-- TIMER BAR — informatif uniquement -->
+<!-- TIMER BAR -->
 <div class="tbar" id="tbar">
   <div class="tbar-inner">
-    <span class="tbar-lbl">⏱ Durée session</span>
-    <div class="ttrack"><div class="tfill" id="tfill"></div></div>
-    <div class="tdisp" id="tdisp">00:00</div>
-    <span class="tbar-info">— indicatif uniquement</span>
+    <span class="tbar-lbl">⏱ Session</span>
+    <div class="ttrack"><div class="tfill green" id="tfill"></div></div>
+    <div class="tdisp green" id="tdisp">1:30:00</div>
   </div>
+</div>
+
+<!-- EXPIRED OVERLAY -->
+<div class="expired" id="expScreen">
+  <div class="exp-ico">⏰</div>
+  <div class="exp-title">SESSION TERMINÉE</div>
+  <div class="exp-txt">Ta session de 1h30 est écoulée.<br>Tu as bossé dur. C'est bien.<br><strong style="color:var(--white)">Reviens demain pour continuer.</strong></div>
+  <div class="exp-note">🔒 Accès verrouillé jusqu'à demain</div>
+  <div class="exp-time" id="expCountdown"></div>
 </div>
 
 <!-- HEADER -->
@@ -319,7 +315,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
     <div class="hero-left">
       <div class="hero-eyebrow">Bootcamp actif — 120 jours</div>
       <h1>DEVIENS<br><em>CONSULTANT IA</em><br>EN 120 JOURS</h1>
-      <p class="hero-sub">Chaque session validée te rapproche de tes premiers clients. Chaque prompt maîtrisé vaut de l'argent.</p>
+      <p class="hero-sub">Chaque session complétée te rapproche de tes premiers clients. Chaque prompt maîtrisé vaut de l'argent.</p>
     </div>
     <div class="hero-right">
       <div class="hero-big-num" id="heroNum">120</div>
@@ -388,30 +384,30 @@ const p1detailed=[
   ]},
   {title:"Claude — Chat, Projects & Instructions Système",sub:"Comprendre l'écosystème Claude pour l'utiliser comme un pro, pas comme un débutant.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:'Maîtriser les différents modes Claude et configurer ton espace de travail personnel pour les 120 jours.'},
-    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Claude.ai Chat</strong> : conversations libres, tests rapides, brainstorming.<br><br><strong>Projects Claude</strong> : mémoire persistante + fichiers de référence. Tu upload tes templates, Claude les garde en contexte permanent.<br><br><strong>Instructions Système</strong> : tu configures Claude une fois, il se comporte toujours comme tu veux — ton assistant consultant IA dédié.<br><br>C'est la différence entre un outil générique et un assistant personnalisé."},
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Claude.ai Chat</strong> : conversations libres, tests rapides, brainstorming.<br><br><strong>Projects Claude</strong> : mémoire persistante + fichiers de référence.<br><br><strong>Instructions Système</strong> : tu configures Claude une fois, il se comporte toujours comme tu veux.<br><br>C'est la différence entre un outil générique et un assistant personnalisé."},
     {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un Project Claude nommé 'AGENTIA — Bootcamp'","Rédige tes instructions système (template ci-dessous)","Upload tes meilleurs prompts des jours 1 et 2","Teste une conversation dans le Project vs Chat classique","Observe comment Claude adapte ses réponses avec le contexte"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Configure ton <strong>espace de travail Claude professionnel</strong> :\n- Instructions système personnalisées\n- Templates de prompts chargés\n- Contexte consultant IA défini\n\nC'est ton assistant dédié pour les 120 jours."},
-    {ico:'💬',ttl:'Prompt à créer',prompt:"INSTRUCTIONS SYSTÈME — Project AGENTIA :\n\nTu es mon assistant consultant IA spécialisé. Mon objectif : devenir consultant IA en 120 jours et signer mes premiers clients.\n\nRègles permanentes :\n- Toujours penser ROI et valeur business\n- Proposer des versions vendables de ce qu'on construit\n- Me corriger sans complaisance\n- Structurer tes réponses de façon actionnable\n- Penser comme un consultant terrain, pas un chercheur\n\nMon niveau : débutant automatisation, intermédiaire prompting."},
-    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Service vendable : "Setup Claude Pro"</strong>',biz:{price:'600€ de setup',det:"Configurer un Project Claude pro pour un consultant ou dirigeant = 2h de travail pour toi = 600€. Valeur client : 2h/jour économisées × 365j × 50€/h = 36 500€/an. Ton service à 600€ vaut 60x son prix."}},
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Configure ton <strong>espace de travail Claude professionnel</strong> :\n- Instructions système personnalisées\n- Templates de prompts chargés\n- Contexte consultant IA défini"},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"INSTRUCTIONS SYSTÈME — Project AGENTIA :\n\nTu es mon assistant consultant IA spécialisé. Mon objectif : devenir consultant IA en 120 jours et signer mes premiers clients.\n\nRègles permanentes :\n- Toujours penser ROI et valeur business\n- Proposer des versions vendables de ce qu'on construit\n- Me corriger sans complaisance\n- Structurer tes réponses de façon actionnable\n\nMon niveau : débutant automatisation, intermédiaire prompting."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Service vendable : "Setup Claude Pro"</strong>',biz:{price:'600€ de setup',det:"Configurer un Project Claude pro pour un consultant = 2h de travail pour toi = 600€. Valeur client : 2h/jour économisées × 365j × 50€/h = 36 500€/an. Ton service à 600€ vaut 60x son prix."}},
     {ico:'✅',ttl:'Résultat attendu',txt:"1. Project Claude AGENTIA configuré\n2. Instructions système rédigées et testées\n3. Tes 3 meilleurs prompts chargés\n4. Prompt de correction → chat mentor"}
   ]},
   {title:"Workflows & Architecture de Flux",sub:"Avant d'automatiser, comprendre comment les données circulent entre les outils.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:'Penser en "flux de données" — la compétence fondamentale de tout consultant en automatisation IA.'},
-    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Trigger → Action → Output.</strong><br><br>Tout workflow suit ce schéma de base :<br>• Trigger = l'événement déclencheur (email reçu, formulaire soumis, heure programmée)<br>• Action = ce qu'on fait (envoyer à Claude, écrire dans CRM, envoyer email)<br>• Output = le résultat final pour l'utilisateur<br><br>Comprendre ce schéma = comprendre n'importe quelle automatisation."},
-    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Sur papier ou Notion, dessine le flux de ton Agent Commercial","Identifie : le trigger, les 5 étapes, l'output","Fais pareil pour l'Agent Productivité","Pour chaque étape : quel outil l'exécute ? Claude ? Make ? Gmail ?","Identifie les points de friction potentiels"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Crée tes <strong>2 schémas de flux</strong> :\n\nAgent Commercial : Prospect identifié → Veille IA → Fiche préparée → Email suivi → Proposition générée\n\nAgent Productivité : Email reçu → Tri IA → Résumé → Brouillon réponse → Priorité agenda"},
-    {ico:'💬',ttl:'Prompt à créer',prompt:"Analyse ce workflow que je viens de dessiner pour mon Agent Commercial :\n[COLLE TON SCHÉMA ICI]\n\nDis-moi :\n1. Les étapes manquantes\n2. Les points de friction potentiels\n3. Les meilleurs outils pour chaque étape (Claude, Make, n8n, autres)\n4. Comment simplifier pour une v1 vendable\n5. Estimation du temps de build\nSois critique et pragmatique."},
-    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : Startup SaaS B2B (5-20 personnes)</strong>',biz:{price:'Setup 2500€ + 600€/mois',det:'2 commerciaux perdent 4h/jour en tâches manuelles. Workflow automatisé (lead → enrichissement → email Claude → CRM) = 4h récupérées/jour. ROI en 2 semaines.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:"1. Schéma flux Agent Commercial (Notion ou papier photo)\n2. Schéma flux Agent Productivité\n3. Liste des outils identifiés pour chaque étape\n4. Prompt de correction → chat mentor"}
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Trigger → Action → Output.</strong><br><br>• Trigger = l'événement déclencheur<br>• Action = ce qu'on fait<br>• Output = le résultat final<br><br>Comprendre ce schéma = comprendre n'importe quelle automatisation."},
+    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Sur papier ou Notion, dessine le flux de ton Agent Commercial","Identifie : le trigger, les 5 étapes, l'output","Fais pareil pour l'Agent Productivité","Pour chaque étape : quel outil l'exécute ?","Identifie les points de friction potentiels"]},
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"Crée tes <strong>2 schémas de flux</strong> :\n\nAgent Commercial : Prospect → Veille IA → Fiche → Email → Proposition\n\nAgent Productivité : Email → Tri IA → Résumé → Brouillon → Agenda"},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"Analyse ce workflow pour mon Agent Commercial :\n[COLLE TON SCHÉMA ICI]\n\nDis-moi :\n1. Les étapes manquantes\n2. Les points de friction\n3. Les meilleurs outils par étape\n4. Comment simplifier pour une v1\n5. Estimation du temps de build"},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : Startup SaaS B2B (5-20 personnes)</strong>',biz:{price:'Setup 2500€ + 600€/mois',det:'2 commerciaux perdent 4h/jour en tâches manuelles. Workflow automatisé = 4h récupérées/jour. ROI en 2 semaines.'}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Schéma flux Agent Commercial\n2. Schéma flux Agent Productivité\n3. Liste des outils identifiés\n4. Prompt de correction → chat mentor"}
   ]},
   {title:"Make — Premier Contact & Premier Scénario",sub:"Premier contact avec Make. Comprendre l'interface et exécuter ton premier workflow.",secs:[
     {ico:'🎯',ttl:'Objectif du jour',txt:"Créer un compte Make, comprendre l'interface, et exécuter ton premier scénario fonctionnel."},
-    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Make = l'outil d'automatisation no-code le plus puissant du marché.</strong><br><br>Scénario = un workflow automatisé<br>Module = une action dans ce workflow<br>Connection = autorisation d'accès à un service<br><br>Tu construis visuellement en glissant-déposant des modules. Pas une ligne de code. C'est ça qui rend ce métier accessible."},
-    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un compte gratuit sur make.com","Prends 5 minutes à explorer l'interface sans rien toucher","Crée ton premier scénario : 'Quand un Google Form est soumis → envoie un email de confirmation'","Execute le scénario manuellement","Observe les logs d'exécution — comprends ce qui se passe"]},
-    {ico:'🤖',ttl:'Mini-agent à construire',txt:"<strong>Scénario Make #1</strong> : Formulaire → Email\n\nTrigger : Google Forms — nouvelle réponse\nAction : Gmail — envoyer email de confirmation\n\nSimple. Mais tu apprends la logique Make qui s'appliquera à tous tes agents."},
-    {ico:'💬',ttl:'Prompt à créer',prompt:"Je commence à apprendre Make pour automatiser des workflows IA.\n\nExplique-moi :\n1. La différence concrète entre Make, Zapier et n8n (avantages/limites)\n2. Les 5 modules Make les plus utilisés en consulting IA\n3. Les meilleures pratiques pour structurer un scénario pro\n4. Les 3 erreurs classiques d'un débutant Make\n5. Comment déboguer quand un scénario ne fonctionne pas\n\nParle-moi comme à un futur consultant, pas comme à un dev."},
-    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : E-commerce (boutique en ligne)</strong>',biz:{price:'Setup 1800€ + 350€/mois',det:'50 commandes/jour × 3 min de traitement manuel = 2h30/jour. Make : commande → email personnalisé Claude → stock → notification équipe. Zéro intervention. ROI immédiat.'}},
-    {ico:'✅',ttl:'Résultat attendu',txt:"1. Compte Make créé\n2. Premier scénario fonctionnel (capture d'écran)\n3. Logs d'exécution lus et compris\n4. Prompt de correction → chat mentor"}
+    {ico:'🧠',ttl:'Notion clé',txt:"<strong>Make = l'outil d'automatisation no-code le plus puissant du marché.</strong><br><br>Scénario = workflow automatisé<br>Module = une action<br>Connection = autorisation d'accès<br><br>Tu construis visuellement. Pas une ligne de code."},
+    {ico:'🛠️',ttl:'Exercice pratique',tasks:["Crée un compte gratuit sur make.com","Explore l'interface 5 minutes","Crée ton premier scénario : Google Form → email de confirmation","Execute manuellement","Lis les logs d'exécution"]},
+    {ico:'🤖',ttl:'Mini-agent à construire',txt:"<strong>Scénario Make #1</strong> : Formulaire → Email\n\nTrigger : Google Forms\nAction : Gmail — confirmation\n\nSimple mais fondamental."},
+    {ico:'💬',ttl:'Prompt à créer',prompt:"Je commence Make pour automatiser des workflows IA.\n\nExplique-moi :\n1. Différence Make vs Zapier vs n8n\n2. Les 5 modules Make les plus utilisés\n3. Meilleures pratiques pour un scénario pro\n4. Les 3 erreurs classiques débutant\n5. Comment déboguer\n\nParle-moi comme à un futur consultant."},
+    {ico:'🏢',ttl:"Cas réel d'entreprise",txt:'<strong>Secteur : E-commerce</strong>',biz:{price:'Setup 1800€ + 350€/mois',det:'50 commandes/jour × 3 min manuel = 2h30/jour. Make automatise tout. ROI immédiat.'}},
+    {ico:'✅',ttl:'Résultat attendu',txt:"1. Compte Make créé\n2. Premier scénario fonctionnel\n3. Logs lus et compris\n4. Prompt de correction → chat mentor"}
   ]}
 ];
 
@@ -422,13 +418,12 @@ for(let d=1;d<=120;d++){
   if(d<=5&&p1detailed[d-1]){
     DATA.push({day:d,phase:ph,...p1detailed[d-1]});
   } else {
-    const tIdx=(d-1)%phTools.length;
-    const topic=phTools[tIdx];
-    DATA.push({day:d,phase:ph,title:topic,sub:`Phase ${ph} — ${phNames[ph]}. Lance ton prompt de relance "Jour ${d} sur 120" dans le chat mentor pour le contenu complet.`,secs:genSec(d,phTools,ph)});
+    const topic=phTools[(d-1)%phTools.length];
+    DATA.push({day:d,phase:ph,title:topic,sub:`Phase ${ph} — ${phNames[ph]}. Lance ton prompt de relance "Jour ${d} sur 120" dans le chat mentor.`,secs:genSec(d,phTools,ph)});
   }
 }
 
-// ─── STATE ───────────────────────────────────────────────
+// ── STATE ──────────────────────────────────────────────────
 let S={cur:1,unlocked:[1],done:[],notes:[],subs:{}};
 function loadS(){try{const r=localStorage.getItem('agentia_s');if(r)S={...S,...JSON.parse(r)};}catch(e){}}
 function saveS(){try{localStorage.setItem('agentia_s',JSON.stringify(S));}catch(e){}}
@@ -437,78 +432,123 @@ function saveUsers(u){localStorage.setItem('agentia_users',JSON.stringify(u));}
 function getSession(){try{return JSON.parse(sessionStorage.getItem('agentia_sess')||'null');}catch(e){return null;}}
 function setSession(u){sessionStorage.setItem('agentia_sess',JSON.stringify({u,ts:Date.now()}));}
 
-// ─── AUTH ─────────────────────────────────────────────────
+// ── AUTH ───────────────────────────────────────────────────
 function showReg(){document.getElementById('loginForm').style.display='none';document.getElementById('regForm').style.display='block';document.getElementById('rerr').textContent='';}
 function showLogin(){document.getElementById('regForm').style.display='none';document.getElementById('loginForm').style.display='block';document.getElementById('lerr').textContent='';}
-
 function handleLogin(){
-  const u=document.getElementById('lu').value.trim().toLowerCase();
-  const p=document.getElementById('lp').value;
-  const err=document.getElementById('lerr');
+  const u=document.getElementById('lu').value.trim().toLowerCase(),p=document.getElementById('lp').value,err=document.getElementById('lerr');
   if(!u||!p){err.textContent='Remplis tous les champs.';return;}
   const users=getUsers();
   if(!users[u]){err.textContent='Utilisateur introuvable.';return;}
   if(users[u].pw!==btoa(p)){err.textContent='Mot de passe incorrect.';return;}
-  err.textContent='';
-  setSession(u);
-  document.getElementById('loginWrap').classList.add('gone');
-  bootApp(u);
+  setSession(u);document.getElementById('loginWrap').classList.add('gone');bootApp(u);
 }
-
 function handleReg(){
-  const u=document.getElementById('ru').value.trim().toLowerCase().replace(/\s+/g,'_');
-  const p=document.getElementById('rp').value;
-  const c=document.getElementById('rc').value;
-  const err=document.getElementById('rerr');
+  const u=document.getElementById('ru').value.trim().toLowerCase().replace(/\s+/g,'_'),p=document.getElementById('rp').value,c=document.getElementById('rc').value,err=document.getElementById('rerr');
   if(!u||!p||!c){err.textContent='Remplis tous les champs.';return;}
-  if(u.length<3){err.textContent='Username trop court (min 3 caractères).';return;}
-  if(p.length<6){err.textContent='Mot de passe trop court (min 6 caractères).';return;}
-  if(p!==c){err.textContent='Les mots de passe ne correspondent pas.';return;}
+  if(u.length<3){err.textContent='Username trop court.';return;}
+  if(p.length<6){err.textContent='Mot de passe trop court.';return;}
+  if(p!==c){err.textContent='Mots de passe différents.';return;}
   const users=getUsers();
-  if(users[u]){err.textContent='Ce username est déjà pris.';return;}
-  users[u]={pw:btoa(p),created:Date.now()};
-  saveUsers(users);
-  err.style.color='var(--green)';err.textContent='✓ Compte créé ! Connexion...';
+  if(users[u]){err.textContent='Username déjà pris.';return;}
+  users[u]={pw:btoa(p),created:Date.now()};saveUsers(users);
+  err.style.color='var(--green)';err.textContent='✓ Compte créé !';
   setTimeout(()=>{err.style.color='var(--red)';setSession(u);document.getElementById('loginWrap').classList.add('gone');bootApp(u);},1000);
 }
-
 function logout(){sessionStorage.removeItem('agentia_sess');location.reload();}
 
-// ─── TIMER — INDICATIF UNIQUEMENT, NE BLOQUE PLUS ────────
-let tElapsed=0,tInt=null,tOn=false,tStart=null;
-const SESS=90*60; // 1h30 de référence visuelle
+// ── TIMER — COMPTE À REBOURS 1h30 ─────────────────────────
+// 🟢 Vert : 1h30 → 45min  |  🟠 Amber : 45min → 15min  |  🔴 Rouge : 15min → 0
+// À 0 : site bloqué jusqu'au lendemain
+const SESS_TOTAL = 90 * 60; // 5400 secondes
+let tLeft = SESS_TOTAL, tInt = null, tOn = false;
+
+function todayKey(){
+  const d=new Date();
+  return `agentia_timer_${d.getFullYear()}_${String(d.getMonth()+1).padStart(2,'0')}_${String(d.getDate()).padStart(2,'0')}`;
+}
+function getTState(){try{return JSON.parse(localStorage.getItem(todayKey())||'null');}catch(e){return null;}}
+function saveTState(o){localStorage.setItem(todayKey(),JSON.stringify(o));}
+function isExpiredToday(){const t=getTState();return t&&t.expired===true;}
 
 function startTimer(){
   if(tOn)return;
-  tOn=true;tStart=Date.now();tElapsed=0;
+  // Récupère le temps restant si session déjà commencée aujourd'hui
+  const ex=getTState();
+  if(ex&&ex.startTs&&!ex.expired){
+    const elapsed=Math.floor((Date.now()-ex.startTs)/1000);
+    tLeft=Math.max(0,SESS_TOTAL-elapsed);
+  } else {
+    tLeft=SESS_TOTAL;
+    saveTState({startTs:Date.now(),expired:false});
+  }
+  if(tLeft<=0){showExpired();return;}
+  tOn=true;
   document.getElementById('tbar').classList.add('on');
-  updateTimer();
+  updateTimerDisplay();
   tInt=setInterval(()=>{
-    tElapsed=Math.floor((Date.now()-tStart)/1000);
-    updateTimer();
+    tLeft--;
+    const ex=getTState();
+    if(ex&&ex.startTs)saveTState({startTs:ex.startTs,expired:false});
+    updateTimerDisplay();
+    if(tLeft<=0){
+      clearInterval(tInt);tOn=false;
+      saveTState({startTs:null,expired:true});
+      document.getElementById('tbar').classList.remove('on');
+      showExpired();
+    }
   },1000);
 }
 
-function stopTimer(){
-  if(tInt)clearInterval(tInt);
-  tOn=false;
-  document.getElementById('tbar').classList.remove('on');
-}
-
-function updateTimer(){
-  const h=Math.floor(tElapsed/3600),m=Math.floor((tElapsed%3600)/60),s=tElapsed%60;
-  const disp=`${h>0?String(h).padStart(2,'0')+':':''}${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  const pct=Math.min((tElapsed/SESS)*100,100);
+function updateTimerDisplay(){
+  const h=Math.floor(tLeft/3600),m=Math.floor((tLeft%3600)/60),s=tLeft%60;
+  const disp=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const pct=(tLeft/SESS_TOTAL)*100;
   const f=document.getElementById('tfill'),d=document.getElementById('tdisp');
   d.textContent=disp;
   f.style.width=pct+'%';
-  // couleur : vert jusqu'à 1h, amber entre 1h et 1h30, puis reste amber
-  const warn=tElapsed>=60*60;
-  f.className='tfill'+(warn?' warn':'');
-  d.className='tdisp'+(warn?' warn':'');
+  // Couleurs : vert > 45min, amber 15-45min, rouge < 15min
+  const isRed=tLeft<15*60, isAmber=tLeft<45*60&&tLeft>=15*60;
+  const col=isRed?'red':isAmber?'amber':'green';
+  f.className='tfill '+col;
+  d.className='tdisp '+col;
 }
 
-// ─── SIDEBAR ──────────────────────────────────────────────
+function showExpired(){
+  document.getElementById('expScreen').classList.add('on');
+  // Compte à rebours jusqu'à minuit
+  updateExpCountdown();
+  setInterval(updateExpCountdown,1000);
+}
+
+function updateExpCountdown(){
+  const now=new Date(),midnight=new Date(now);
+  midnight.setHours(24,0,0,0);
+  const diff=Math.floor((midnight-now)/1000);
+  const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
+  const el=document.getElementById('expCountdown');
+  if(el)el.textContent=`Disponible dans ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function checkTimerOnLoad(){
+  if(isExpiredToday()){showExpired();return;}
+  const ex=getTState();
+  if(ex&&ex.startTs&&!ex.expired){
+    const elapsed=Math.floor((Date.now()-ex.startTs)/1000);
+    tLeft=Math.max(0,SESS_TOTAL-elapsed);
+    if(tLeft<=0){saveTState({startTs:null,expired:true});showExpired();return;}
+    tOn=true;
+    document.getElementById('tbar').classList.add('on');
+    updateTimerDisplay();
+    tInt=setInterval(()=>{
+      tLeft--;
+      updateTimerDisplay();
+      if(tLeft<=0){clearInterval(tInt);tOn=false;saveTState({startTs:null,expired:true});document.getElementById('tbar').classList.remove('on');showExpired();}
+    },1000);
+  }
+}
+
+// ── SIDEBAR ────────────────────────────────────────────────
 function renderSidebar(){
   const list=document.getElementById('daylist');list.innerHTML='';
   const bounds=[{s:1,e:20,n:'Phase 1 — Fondamentaux'},{s:21,e:45,n:'Phase 2 — Automatisation'},{s:46,e:75,n:'Phase 3 — Agents IA'},{s:76,e:100,n:'Phase 4 — Cas Réels'},{s:101,e:120,n:'Phase 5 — Branding & Vente'}];
@@ -516,10 +556,9 @@ function renderSidebar(){
     const sep=document.createElement('div');sep.className='ph-sep';sep.textContent=b.n;list.appendChild(sep);
     for(let d=b.s;d<=b.e;d++){
       const isU=S.unlocked.includes(d),isDone=S.done.includes(d),isCur=d===S.cur;
-      const dd=DATA[d-1];
       const btn=document.createElement('button');
       btn.className=`dbtn${isCur?' active':''}${isDone?' done':''}${!isU?' locked':''}`;
-      btn.innerHTML=`<span class="dbtn-n">${String(d).padStart(2,'0')}</span><span style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${dd.title}</span><span class="dbtn-s">${isDone?'✓':isU?'›':'⚿'}</span>`;
+      btn.innerHTML=`<span class="dbtn-n">${String(d).padStart(2,'0')}</span><span style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${DATA[d-1].title}</span><span class="dbtn-s">${isDone?'✓':isU?'›':'⚿'}</span>`;
       if(isU)btn.onclick=()=>selectDay(d);
       list.appendChild(btn);
     }
@@ -528,18 +567,15 @@ function renderSidebar(){
 
 const PHN=['','Fondamentaux','Automatisation','Agents IA','Cas Réels','Branding & Vente'];
 
-// ─── CONTENT ──────────────────────────────────────────────
+// ── CONTENT ────────────────────────────────────────────────
 function renderContent(day,go){
   const area=document.getElementById('content');area.innerHTML='';
-  const dd=DATA[day-1];
-  const isU=S.unlocked.includes(day),isDone=S.done.includes(day);
+  const dd=DATA[day-1],isU=S.unlocked.includes(day),isDone=S.done.includes(day);
   const card=document.createElement('div');card.className='daycard on';
-
   if(!isU){
-    card.innerHTML=`<div class="locked-view"><div class="lock-ico">⚿</div><div class="lock-title">SESSION ${day} VERROUILLÉE</div><div class="lock-txt">Clique sur "✅ Session Validée" dans la session ${day-1} pour débloquer celle-ci.</div></div>`;
+    card.innerHTML=`<div class="locked-view"><div class="lock-ico">⚿</div><div class="lock-title">SESSION ${day} VERROUILLÉE</div><div class="lock-txt">Valide la session ${day-1} et clique sur "✅ Session Validée" pour débloquer.</div></div>`;
     area.appendChild(card);return;
   }
-
   let secsHtml='';
   dd.secs.forEach(s=>{
     let ch='';
@@ -549,19 +585,13 @@ function renderContent(day,go){
     else ch=`<div class="sec-txt">${s.txt.replace(/\n/g,'<br>')}</div>`;
     secsHtml+=`<div class="sec"><div class="sec-head"><span class="sec-icon">${s.ico}</span><span class="sec-title">${s.ttl}</span></div>${ch}</div>`;
   });
-
   const corrPrompt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n[DÉCRIS EN 2-3 LIGNES CE QUE TU AS FAIT ET PRODUIT]\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;
-
   let bottom='';
-
   if(isDone){
-    // Session déjà validée
     bottom=`<div class="done-area"><div class="done-title">✅ Session ${day} validée</div><div class="done-work">${S.subs[day]||'Travail validé.'}</div></div>`;
   } else if(!go){
-    // Pas encore démarrée
-    bottom=`<div class="start-banner"><div class="start-txt"><h3>PRÊT À DÉMARRER ?</h3><p>Lance la session. Le chrono est indicatif — tu valides quand tu es prêt.</p></div><button class="startbtn" onclick="startSession(${day})">▶ DÉMARRER</button></div>`;
+    bottom=`<div class="start-banner"><div class="start-txt"><h3>PRÊT À DÉMARRER ?</h3><p>1h30 de session. Chrono 🟢→🟠→🔴. Valide avant 0 !</p></div><button class="startbtn" onclick="startSession(${day})">▶ DÉMARRER</button></div>`;
   } else {
-    // Session en cours — affiche zone de travail + prompt correction + bouton valider
     bottom=`
     <div class="subarea">
       <div class="sub-title">📝 Note ton travail du jour</div>
@@ -570,41 +600,39 @@ function renderContent(day,go){
     </div>
     <div class="copy-banner">
       <div class="copy-banner-title">📋 Prompt de correction — à envoyer dans le chat</div>
-      <div class="copy-banner-txt">Copie ce prompt → envoie-le dans le chat Claude → obtiens ta validation → reviens ici cliquer sur le bouton vert.</div>
+      <div class="copy-banner-txt">Copie → envoie dans le chat Claude → obtiens ta validation → reviens cliquer sur le bouton vert.</div>
       <div class="copy-banner-box">${corrPrompt}</div>
       <button class="copy-green-btn" onclick="copyCorrPrompt(${day})">COPIER LE PROMPT DE CORRECTION</button>
     </div>
     <div class="validate-banner">
       <div class="validate-txt">
         <h3>✅ SESSION VALIDÉE PAR LE MENTOR ?</h3>
-        <p>Claude t'a validé dans le chat ?<br>Clique ici pour débloquer la session ${day+1}.</p>
+        <p>Claude t'a validé dans le chat ?<br>Clique ici → session ${day+1} débloquée.</p>
       </div>
       <button class="validatebtn" onclick="confirmValidate(${day})">✅ SESSION VALIDÉE</button>
     </div>`;
   }
-
   card.innerHTML=`<div class="card-head"><div class="card-meta"><span class="dtag">JOUR ${String(day).padStart(2,'0')}</span><span class="ptag">Phase ${dd.phase} — ${PHN[dd.phase]}</span>${isDone?'<span class="vtag">✓ VALIDÉ</span>':''}</div><div class="card-title">${dd.title}</div><div class="card-sub">${dd.sub}</div></div><div class="card-body">${secsHtml}</div>${bottom}`;
   area.appendChild(card);
 }
 
-// ─── ACTIONS ──────────────────────────────────────────────
+// ── ACTIONS ────────────────────────────────────────────────
 function startSession(day){
+  if(isExpiredToday()){showExpired();return;}
   startTimer();
   renderContent(day,true);
-  showToast('▶ Session démarrée — le chrono tourne, bonne session !');
+  showToast('▶ Session démarrée — 1h30 au chrono. Go !');
 }
 
 function submitWork(day){
-  const ta=document.getElementById('subtxt');
-  const txt=ta?.value?.trim();
+  const ta=document.getElementById('subtxt'),txt=ta?.value?.trim();
   if(!txt){showToast('⚠️ Décris ton travail avant de sauvegarder !');return;}
   S.subs[day]=txt;saveS();saveNote(day,txt);
-  showToast('💾 Travail sauvegardé ! Copie le prompt de correction.');
+  showToast('💾 Sauvegardé ! Copie le prompt de correction.');
 }
 
 function copyCorrPrompt(day){
-  const ta=document.getElementById('subtxt');
-  const work=ta?.value?.trim()||S.subs[day]||'[travail non renseigné]';
+  const ta=document.getElementById('subtxt'),work=ta?.value?.trim()||S.subs[day]||'[travail non renseigné]';
   const txt=`Donne-moi mon plan de travail du jour (jour ${day} sur 120) dans le cadre de mon objectif de devenir consultant IA.\n\nCe que j'ai produit aujourd'hui :\n${work}\n\nCorrection demandée : valide si mes livrables du jour sont suffisants pour passer au jour suivant.`;
   navigator.clipboard.writeText(txt).then(()=>showToast('✅ Prompt copié ! Colle-le dans le chat Claude.')).catch(()=>{});
 }
@@ -617,98 +645,55 @@ function confirmValidate(day){
 }
 
 function markDone(day){
-  const ta=document.getElementById('subtxt');
-  const txt=ta?.value?.trim();
+  const ta=document.getElementById('subtxt'),txt=ta?.value?.trim();
   if(txt&&!S.subs[day]){S.subs[day]=txt;saveNote(day,txt);}
   if(!S.done.includes(day))S.done.push(day);
   const next=day+1;
   if(next<=120&&!S.unlocked.includes(next))S.unlocked.push(next);
   saveS();
-  stopTimer();
-  renderContent(day,false);
-  renderSidebar();
-  updateStats();
-  celebrate();
+  renderContent(day,false);renderSidebar();updateStats();celebrate();
   showToast(`🎉 Session ${day} validée ! Session ${day+1} débloquée.`);
 }
 
 function selectDay(d){
-  S.cur=d;saveS();
-  renderSidebar();
-  const go=tOn&&S.cur===d;
-  renderContent(d,go);
+  if(isExpiredToday()&&!S.done.includes(d)){showExpired();return;}
+  S.cur=d;saveS();renderSidebar();
+  renderContent(d,tOn);
   updateStats();
   document.getElementById('content').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// ─── NOTES ────────────────────────────────────────────────
+// ── NOTES ──────────────────────────────────────────────────
 function saveNote(day,content){
   S.notes=S.notes.filter(n=>n.day!==day);
   S.notes.unshift({id:Date.now(),day,title:`Session ${day} — ${DATA[day-1]?.title}`,content,date:new Date().toLocaleDateString('fr-FR')});
   saveS();renderNotes();
 }
-
 function renderNotes(){
   const body=document.getElementById('notesBody'),empty=document.getElementById('notesEmpty');
   body.querySelectorAll('.note-item').forEach(e=>e.remove());
   if(!S.notes.length){if(empty)empty.style.display='block';return;}
   if(empty)empty.style.display='none';
-  S.notes.forEach(n=>{
-    const el=document.createElement('div');el.className='note-item';
-    el.innerHTML=`<div class="note-ttl">${n.title}</div><div class="note-prev">${n.content}</div><div class="note-date">${n.date}</div>`;
-    el.onclick=()=>dlNote(n);body.appendChild(el);
-  });
+  S.notes.forEach(n=>{const el=document.createElement('div');el.className='note-item';el.innerHTML=`<div class="note-ttl">${n.title}</div><div class="note-prev">${n.content}</div><div class="note-date">${n.date}</div>`;el.onclick=()=>dlNote(n);body.appendChild(el);});
 }
-
-function dlNote(n){
-  const c=`AGENTIA — ${n.title}\nDate: ${n.date}\n\n${'='.repeat(50)}\n\n${n.content}`;
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));
-  a.download=`AGENTIA_Session${n.day}_${n.date.replace(/\//g,'-')}.txt`;a.click();
-  showToast('📥 Note téléchargée !');
-}
-
-function exportAll(){
-  if(!S.notes.length){showToast('Aucune note à exporter');return;}
-  let c=`AGENTIA — Toutes mes notes\n${new Date().toLocaleDateString('fr-FR')}\n\n${'='.repeat(60)}\n\n`;
-  S.notes.forEach(n=>{c+=`SESSION ${n.day} — ${n.title}\n${n.date}\n${'─'.repeat(40)}\n${n.content}\n\n`;});
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));
-  a.download='AGENTIA_AllNotes.txt';a.click();showToast('📦 Export complet !');
-}
-
+function dlNote(n){const c=`AGENTIA — ${n.title}\nDate: ${n.date}\n\n${'='.repeat(50)}\n\n${n.content}`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));a.download=`AGENTIA_S${n.day}.txt`;a.click();showToast('📥 Note téléchargée !');}
+function exportAll(){if(!S.notes.length){showToast('Aucune note');return;}let c=`AGENTIA — Toutes mes notes\n${new Date().toLocaleDateString('fr-FR')}\n\n${'='.repeat(60)}\n\n`;S.notes.forEach(n=>{c+=`SESSION ${n.day} — ${n.title}\n${n.date}\n${'─'.repeat(40)}\n${n.content}\n\n`;});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/plain'}));a.download='AGENTIA_Notes.txt';a.click();showToast('📦 Export complet !');}
 function toggleNotes(){document.getElementById('notesPanel').classList.toggle('on');renderNotes();}
 
-// ─── MODAL ────────────────────────────────────────────────
+// ── MODAL ──────────────────────────────────────────────────
 function showModal(ico,title,txt,actions){
-  document.getElementById('mico').textContent=ico;
-  document.getElementById('mtitle').textContent=title;
-  document.getElementById('mtxt').textContent=txt;
+  document.getElementById('mico').textContent=ico;document.getElementById('mtitle').textContent=title;document.getElementById('mtxt').textContent=txt;
   const acts=document.getElementById('macts');acts.innerHTML='';
   actions.forEach(a=>{const b=document.createElement('button');b.className=`mbtn ${a.pri?'pri':'sec'}`;b.textContent=a.txt;b.onclick=a.fn;acts.appendChild(b);});
   document.getElementById('modalBg').classList.add('on');
 }
 function closeModal(){document.getElementById('modalBg').classList.remove('on');}
-
-// ─── UTILS ────────────────────────────────────────────────
-function copyP(btn){
-  const t=btn.parentElement.textContent.replace('COPIER','').replace('// PROMPT','').trim();
-  navigator.clipboard.writeText(t).then(()=>{btn.textContent='COPIÉ ✓';setTimeout(()=>btn.textContent='COPIER',2000);});
-}
-
-function showToast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');
-  setTimeout(()=>t.classList.remove('on'),3500);
-}
-
-function celebrate(){
-  for(let i=0;i<20;i++)setTimeout(()=>{
-    const p=document.createElement('div');
-    p.style.cssText=`position:fixed;width:7px;height:7px;border-radius:50%;background:${['#ff6b1a','#22c55e','#f0ebe3','#ffad75'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*60}%;z-index:999;pointer-events:none;animation:pop 1.3s ease-out forwards;`;
-    document.body.appendChild(p);setTimeout(()=>p.remove(),1300);
-  },i*60);
-}
+function copyP(btn){const t=btn.parentElement.textContent.replace('COPIER','').replace('// PROMPT','').trim();navigator.clipboard.writeText(t).then(()=>{btn.textContent='COPIÉ ✓';setTimeout(()=>btn.textContent='COPIER',2000);});}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500);}
+function celebrate(){for(let i=0;i<20;i++)setTimeout(()=>{const p=document.createElement('div');p.style.cssText=`position:fixed;width:7px;height:7px;border-radius:50%;background:${['#ff6b1a','#22c55e','#f0ebe3','#ffad75'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*60}%;z-index:999;pointer-events:none;animation:pop 1.3s ease-out forwards;`;document.body.appendChild(p);setTimeout(()=>p.remove(),1300);},i*60);}
 const ps=document.createElement('style');ps.textContent='@keyframes pop{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-160px) scale(0);opacity:0}}';document.head.appendChild(ps);
 
-// ─── STATS ────────────────────────────────────────────────
+// ── STATS ──────────────────────────────────────────────────
 function updateStats(){
   const done=S.done.length,pct=Math.round((done/120)*100);
   document.getElementById('hday').textContent=String(S.cur).padStart(2,'0')+'/120';
@@ -717,11 +702,7 @@ function updateStats(){
   document.getElementById('rpct').textContent=pct+'%';
   document.getElementById('heroNum').textContent=120-done;
   const circ=119.4;document.getElementById('rfill').style.strokeDashoffset=circ-(pct/100)*circ;
-  [1,2,3,4,5].forEach(ph=>{
-    const ps=[1,21,46,76,101][ph-1],pe=[20,45,75,100,120][ph-1];
-    const tot=pe-ps+1,dn=S.done.filter(d=>d>=ps&&d<=pe).length;
-    const b=document.getElementById('pf'+ph);if(b)b.style.width=Math.round((dn/tot)*100)+'%';
-  });
+  [1,2,3,4,5].forEach(ph=>{const ps=[1,21,46,76,101][ph-1],pe=[20,45,75,100,120][ph-1];const tot=pe-ps+1,dn=S.done.filter(d=>d>=ps&&d<=pe).length;const b=document.getElementById('pf'+ph);if(b)b.style.width=Math.round((dn/tot)*100)+'%';});
 }
 
 function filterPhase(ph){
@@ -730,20 +711,18 @@ function filterPhase(ph){
   selectDay(S.unlocked.includes(ps)?ps:S.cur);
 }
 
-// ─── BOOT ─────────────────────────────────────────────────
+// ── BOOT ───────────────────────────────────────────────────
 function bootApp(username){
   loadS();
   if(!S.unlocked.includes(1))S.unlocked.push(1);
   document.getElementById('huser').textContent='👤 '+username;
   renderSidebar();renderContent(S.cur,false);renderNotes();updateStats();
+  checkTimerOnLoad();
 }
 
 function init(){
   const sess=getSession();
-  if(sess&&sess.u){
-    document.getElementById('loginWrap').classList.add('gone');
-    bootApp(sess.u);
-  }
+  if(sess&&sess.u){document.getElementById('loginWrap').classList.add('gone');bootApp(sess.u);}
 }
 
 document.getElementById('toReg').onclick=showReg;
