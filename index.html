@@ -429,8 +429,8 @@ function loadS(){try{const r=localStorage.getItem('agentia_s');if(r)S={...S,...J
 function saveS(){try{localStorage.setItem('agentia_s',JSON.stringify(S));}catch(e){}}
 function getUsers(){try{return JSON.parse(localStorage.getItem('agentia_users')||'{}');}catch(e){return{};}}
 function saveUsers(u){localStorage.setItem('agentia_users',JSON.stringify(u));}
-function getSession(){try{return JSON.parse(sessionStorage.getItem('agentia_sess')||'null');}catch(e){return null;}}
-function setSession(u){sessionStorage.setItem('agentia_sess',JSON.stringify({u,ts:Date.now()}));}
+function getSession(){try{return JSON.parse(localStorage.getItem('agentia_sess')||'null');}catch(e){return null;}}
+function setSession(u){localStorage.setItem('agentia_sess',JSON.stringify({u,ts:Date.now()}));}
 
 // ── AUTH ───────────────────────────────────────────────────
 function showReg(){document.getElementById('loginForm').style.display='none';document.getElementById('regForm').style.display='block';document.getElementById('rerr').textContent='';}
@@ -455,7 +455,7 @@ function handleReg(){
   err.style.color='var(--green)';err.textContent='✓ Compte créé !';
   setTimeout(()=>{err.style.color='var(--red)';setSession(u);document.getElementById('loginWrap').classList.add('gone');bootApp(u);},1000);
 }
-function logout(){sessionStorage.removeItem('agentia_sess');location.reload();}
+function logout(){localStorage.removeItem('agentia_sess');location.reload();}
 
 // ── TIMER — COMPTE À REBOURS 1h30 ─────────────────────────
 // 🟢 Vert : 1h30 → 45min  |  🟠 Amber : 45min → 15min  |  🔴 Rouge : 15min → 0
